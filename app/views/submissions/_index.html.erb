@@ -1,0 +1,31 @@
+<h1>Submissions</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>User</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @submissions.each do |submission| %>
+    <tr>
+      <td><%= submission.title %></td>
+      <td><%= submission.user.email %></td>
+      <td><%= link_to 'Show', challenge_statement_submission_path(@challenge_statement, submission) %></td>
+      <% if !current_user.admin %>
+        <td><%= link_to 'Edit',  edit_challenge_statement_submission_path(@challenge_statement, submission) %></td>
+        <td><%= link_to 'Destroy', challenge_statement_submission_path(@challenge_statement, submission), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if !@submissions.any?{|submission| submission.user_id == current_user.id } && !current_user.admin %>
+  <%= link_to 'Add a Submission',  new_challenge_statement_submission_path(@challenge_statement) %> |
+<% end %>

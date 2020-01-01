@@ -1,10 +1,10 @@
-<%= form_with(model: upload, local: true) do |form| %>
-  <% if upload.errors.any? %>
+<%= form_with(model: @submission, url: [@challenge_statement, @submission], local: true) do |form| %>
+  <% if @submission.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(upload.errors.count, "error") %> prohibited this upload from being saved:</h2>
+      <h2><%= pluralize(submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
 
       <ul>
-        <% upload.errors.full_messages.each do |message| %>
+        <% @submission.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -17,11 +17,6 @@
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class ="field">
     <%= form.label :file %>
     <%= form.file_field :file %>
   </div>

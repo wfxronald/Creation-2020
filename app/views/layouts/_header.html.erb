@@ -9,9 +9,6 @@
           <li class="nav-item active">
             <%= link_to 'Creation 2020', static_pages_home_path, id: "logo", class: 'nav-item nav-link' %>
           </li>
-          <li>
-            <%= link_to "Home",   '#' , class: 'nav-item nav-link' %>
-          </li>
 
           <li class="nav-item">
             <%= link_to "FAQ", static_pages_faq_path, class: 'nav-link' %>
@@ -19,7 +16,7 @@
 
           <li class="navbar-right">
             <% if user_signed_in? %>
-                <li><%= link_to 'Submissions', uploads_path, class: 'nav-item nav-link' %></li>
+                <li><%= link_to 'Challenge Statements', challenge_statements_path , class: 'nav-item nav-link' %></li>
                 <li><%= link_to 'Profile', edit_user_registration_path, class: 'nav-item nav-link' %></li>
                 <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-item nav-link' %></li>
             <% else %>

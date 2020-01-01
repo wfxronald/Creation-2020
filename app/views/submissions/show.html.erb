@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @submission.title %>
+</p>
+
+<p>
+  <strong>Submission:</strong>
+  <%= link_to @submission.file.filename, rails_blob_path(@submission.file, disposition: 'attachment') %>
+</p>
+
+<%= link_to 'Edit', edit_challenge_statement_submission_path(@challenge_statement, @submission) %> |
+<%= link_to 'Back', challenge_statement_path(@challenge_statement) %>

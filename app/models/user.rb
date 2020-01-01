@@ -1,8 +1,14 @@
 class User < ApplicationRecord
 
-  has_many :uploads
+  has_many :challenge_statements
+  has_many :submissions
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def is_admin?
+    admin
+  end
+
 end
