@@ -31,3 +31,8 @@
 <% if current_user.admin %>
   <%= link_to 'New Challenge Statement', new_challenge_statement_path %>
 <% end %>
+
+<div class="click">
+  <button class="copy">copy text</button>
+  <span style="display: none;"><%= @email %></span>
+</div>

@@ -27,10 +27,7 @@
 <br>
 
 
-<div class="click">
-  <button class="copy">copy text</button>
-  <span><%= @email %></span>
-</div>
+
 
 <% if !@submissions.any?{|submission| submission.user_id == current_user.id } && !current_user.admin %>
   <%= link_to 'Add a Submission',  new_challenge_statement_submission_path(@challenge_statement) %> |

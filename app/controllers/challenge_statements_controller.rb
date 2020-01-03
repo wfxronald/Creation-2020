@@ -6,6 +6,8 @@ class ChallengeStatementsController < ApplicationController
   # GET /challenge_statements.json
   def index
     @challenge_statements = ChallengeStatement.all
+    @user = User.all
+    @email = @user.collect(&:email).join(", ")
   end
 
   # GET /challenge_statements/1
