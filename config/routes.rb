@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :mailing_lists
+
   resources :challenge_statements do
     resources :submissions
   end
   get 'static_pages/home'
   get 'static_pages/faq'
+  get 'static_pages/rules'
 
 
   devise_for :users, controllers: { sessions: 'users/sessions' }

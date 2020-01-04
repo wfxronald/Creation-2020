@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Mailing Lists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>
+        <div class="click">
+          <button class="copy">Copy all emails</button>
+          <span style="display: none;"><%= @email %></span>
+        </div>
+      </th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mailing_lists.each do |mailing_list| %>
+      <tr>
+        <td><%= mailing_list.email %></td>
+        <td><%= link_to 'Delete Subscriber', mailing_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
