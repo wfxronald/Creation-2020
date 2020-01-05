@@ -31,3 +31,7 @@
 
 en:
   hello: "Hello world"
+
+  message_mailer:
+   contact_us:
+     subject: "Message from Creation 2020"

@@ -3,7 +3,7 @@ class MailingListsController < ApplicationController
   load_and_authorize_resource
 
   # GET /mailing_lists
-  # GET /mailing_lists.json 
+  # GET /mailing_lists.json
   def index
     @mailing_lists = MailingList.all
     @email = @mailing_lists.collect(&:email).join("; ")
@@ -12,6 +12,7 @@ class MailingListsController < ApplicationController
   # GET /mailing_lists/new
   def new
     @mailing_list = MailingList.new
+    @message = Message.new
   end
 
 
@@ -19,15 +20,11 @@ class MailingListsController < ApplicationController
   # POST /mailing_lists.json
   def create
     @mailing_list = MailingList.new(mailing_list_params)
-    respond_to do |format|
-      if @mailing_list.save
-        format.html { redirect_to static_pages_faq_path, notice: 'You have subscribed to our Mailing List' }
-        format.json { render :show, status: :ok, location: @mailing_list }
-
-      else
-        format.html { render "static_pages/faq" }
-        format.json { render json: @mailing_list.errors, status: :unprocessable_entity }
-      end
+    if @mailing_list.valid?
+        redirect_to new_message_path, notice: 'You have subscribed to our Mailing List'
+    else
+      @message = Message.new
+      render template: "messages/new"
     end
   end
 
