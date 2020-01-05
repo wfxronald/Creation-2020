@@ -35,3 +35,7 @@ en:
   message_mailer:
    contact_us:
      subject: "Message from Creation 2020"
+
+  submission_mailer:
+    submit_upload:
+      subject: "Confirmation of submission"

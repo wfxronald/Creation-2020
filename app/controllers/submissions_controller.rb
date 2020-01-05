@@ -29,6 +29,7 @@ class SubmissionsController < ApplicationController
     @submission.user_id = current_user.id
     respond_to do |format|
       if @submission.save
+        SubmissionMailer.submit_upload(@submission).deliver_now
         format.html { redirect_to @challenge_statement, notice: 'Submission was successfully created.' }
         format.json { render :show, status: :created, location: @submission }
       else
@@ -43,6 +44,7 @@ class SubmissionsController < ApplicationController
   def update
     respond_to do |format|
       if @submission.update(submission_params)
+        SubmissionMailer.submit_upload(@submission).deliver_now
         format.html { redirect_to @challenge_statement, notice: 'Submission was successfully updated.' }
         format.json { render :show, status: :ok, location: @submission }
       else

@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates_acceptance_of :rules_and_regulations, :allow_nil => false, :accept => true, :on => :create
+  validates :rules_and_regulations, acceptance: true
   def is_admin?
     admin
   end
