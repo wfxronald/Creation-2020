@@ -17,9 +17,11 @@
         <td><%= challenge_statement.title %></td>
         <td><%= challenge_statement.description %></td>
         <td><%= link_to 'Show', challenge_statement %></td>
-        <% if current_user.admin %>
-          <td><%= link_to 'Edit', edit_challenge_statement_path(challenge_statement) %></td>
-          <td><%= link_to 'Destroy', challenge_statement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if user_signed_in? %>
+          <% if current_user.admin %>
+              <td><%= link_to 'Edit', edit_challenge_statement_path(challenge_statement) %></td>
+              <td><%= link_to 'Destroy', challenge_statement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>
@@ -28,6 +30,8 @@
 
 <br>
 
-<% if current_user.admin %>
-  <%= link_to 'New Challenge Statement', new_challenge_statement_path %>
+<% if user_signed_in? %>
+  <% if current_user.admin %>
+    <%= link_to 'New Challenge Statement', new_challenge_statement_path %>
+  <% end %>
 <% end %>

@@ -8,11 +8,20 @@
   <%= @challenge_statement.description %>
 </p>
 
-<%= render "submissions/index" %>
-
-<% if current_user.admin %>
-  <%= link_to 'Edit', edit_challenge_statement_path(@challenge_statement) %> |
+<% if user_signed_in? %>
+  <%= render "submissions/index" %>
 <% end %>
 
-<%= link_to 'Back', challenge_statements_path %>
+
+<% if current_user == nil || !@challenge_statement.id.in?(current_user.joined_challenge_statement) %>
+  <%=  button_to "Join Challenge Statement", join_challenge_statement_path(@challenge_statement) %>
+<%  end %>
+
+<% if user_signed_in? %>
+  <% if current_user.admin %>
+    <%= button_to 'Edit', edit_challenge_statement_path(@challenge_statement) %>
+  <% end %>
+<% end %>
+
+<%= button_to 'Back', challenge_statements_path %>
 

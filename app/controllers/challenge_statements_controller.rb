@@ -1,5 +1,5 @@
 class ChallengeStatementsController < ApplicationController
-  before_action :set_challenge_statement, only: [:show, :edit, :update, :destroy]
+  before_action :set_challenge_statement, only: [:show, :edit, :update, :destroy, :join]
   load_and_authorize_resource
 
   # GET /challenge_statements
@@ -11,10 +11,12 @@ class ChallengeStatementsController < ApplicationController
   # GET /challenge_statements/1
   # GET /challenge_statements/1.json
   def show
-    if current_user.admin
-      @submissions = @challenge_statement.submissions
-    else
-      @submissions = @challenge_statement.submissions.where(:user_id => current_user.id)
+    if user_signed_in?
+      if current_user.admin
+        @submissions = @challenge_statement.submissions
+      else
+        @submissions = @challenge_statement.submissions.where(:user_id => current_user.id)
+      end
     end
   end
 
@@ -64,6 +66,15 @@ class ChallengeStatementsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to challenge_statements_url, notice: 'Challenge statement was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def join
+    if user_signed_in?
+      current_user.joined_challenge_statement.push(@challenge_statement.id)
+      redirect_to challenge_statement_path(@challenge_statement)
+    else
+      redirect_to new_user_session_path, notice: "Please sign in to continue."
     end
   end
 

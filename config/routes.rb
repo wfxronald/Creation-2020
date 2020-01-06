@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     resources :submissions
   end
 
+  resources :challenge_statements do
+    post 'join', on: :member
+  end
   #static-pages
   get 'static_pages/home'
   get 'static_pages/faq'
@@ -16,6 +19,7 @@ Rails.application.routes.draw do
 
   #users
   devise_for :users, controllers: { sessions: 'users/sessions' }
+  get '/user' => "challenge_statements#index", :as => :user_root
 
   #get 'users/:id/uploads' => 'users#uploads', :as => :user_uploads
 

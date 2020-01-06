@@ -33,12 +33,15 @@ class Ability
     if user.present? && !user.admin
       can :manage, Submission, user_id: user.id
       can :read, ChallengeStatement
+      can :join, ChallengeStatement
       can :create, MailingList
     elsif user.present? && user.admin
       can :read, Submission
       can :manage, ChallengeStatement
       can :manage, MailingList
     else
+      can :read, ChallengeStatement
+      can :join, ChallengeStatement
       can :create, MailingList
     end
   end
