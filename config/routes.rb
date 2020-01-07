@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     post 'join', on: :member
     resources :submissions
   end
+  match 'submit', to: 'challenge_statements#submit', as: 'all_submissions', :via => :get
 
   #static-pages
   get 'static_pages/home'

@@ -1,0 +1,8 @@
+<h1>Challenge Statements</h1>
+
+<% @challenge_statements.each do |challenge_statement| %>
+  <td><%= challenge_statement.title %></td>
+  <% @challenge_statement = challenge_statement %>
+  <% @submission = @challenge_statement.submissions.where(:user_id => current_user.id) %>
+  <%= render "submissions/index" %>
+<% end %>

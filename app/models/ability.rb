@@ -37,6 +37,7 @@ class Ability
       end
       can :read, ChallengeStatement
       can :join, ChallengeStatement
+      can :submit, ChallengeStatement
       can :create, MailingList
     elsif user.present? && user.admin
       can :read, Submission

@@ -9,11 +9,6 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
 
-  def uploads
-    @user = User.find(params[:id])
-    @uploads = @user.uploads.all
-  end
-
   # POST /resource/sign_in
   # def create
   #   super

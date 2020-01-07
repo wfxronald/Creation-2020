@@ -3,30 +3,30 @@ class SubmissionsController < ApplicationController
   load_and_authorize_resource :challenge_statement
   load_and_authorize_resource :submission, through: :challenge_statement
 
-  # GET /submissions
-  # GET /submissions.json
+  # GET /submit
+  # GET /submit.json
 
-  # GET /submissions/1
-  # GET /submissions/1.json
+  # GET /submit/1
+  # GET /submit/1.json
   def show
   end
 
-  # GET /submissions/new
+  # GET /submit/new
   def new
     @challenge_statement = ChallengeStatement.find(params[:challenge_statement_id])
-    @submission = @challenge_statement.submissions.new
+    @submission = @challenge_statement.submit.new
     @submission.user_id = current_user.id
   end
 
-  # GET /submissions/1/edit
+  # GET /submit/1/edit
   def edit
   end
 
-  # POST /submissions
-  # POST /submissions.json
+  # POST /submit
+  # POST /submit.json
   def create
     @challenge_statement = ChallengeStatement.find(params[:challenge_statement_id])
-    @submission = @challenge_statement.submissions.new(submission_params)
+    @submission = @challenge_statement.submit.new(submission_params)
     #@submission.assign_attributes( {:challenge_statement_id => @challenge_statement.id} )
     #authorize! :create, @submission
     @submission.user_id = current_user.id
@@ -42,8 +42,8 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /submissions/1
-  # PATCH/PUT /submissions/1.json
+  # PATCH/PUT /submit/1
+  # PATCH/PUT /submit/1.json
   def update
     respond_to do |format|
       if @submission.update(submission_params)
@@ -57,8 +57,8 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # DELETE /submissions/1
-  # DELETE /submissions/1.json
+  # DELETE /submit/1
+  # DELETE /submit/1.json
   def destroy
     @submission.destroy
     respond_to do |format|
@@ -71,7 +71,7 @@ class SubmissionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_submission
       @challenge_statement = ChallengeStatement.find(params[:challenge_statement_id])
-      @submission = @challenge_statement.submissions.find(params[:id])
+      @submission = @challenge_statement.submit.find(params[:id])
     end
 
 

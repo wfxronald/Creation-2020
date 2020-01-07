@@ -1,24 +1,130 @@
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%#= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field asterisk">
+    <%= f.label :name, "Full Name" %>
+  </div>
+  <div>
+    <%= f.text_field :name, class: 'form-control' %>
+    <% if resource.errors.any? && resource.errors.include?(:name) %>
+      <div class="invalid-feedback d-block">
+        <%  resource.errors.messages[:name].each do |error| %>
+          <% error.insert(0, "Name ") %>
+        <% end %>
+        <%=  resource.errors.messages[:name].join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="field asterisk">
+    <%= f.label :matrix_number, "Matriculation Number" %>
+  </div>
+  <div>
+    <%= f.text_field :matrix_number, class: 'form-control' %>
+    <% if resource.errors.any? && resource.errors.include?(:matrix_number) %>
+      <div class="invalid-feedback d-block">
+        <%  resource.errors.messages[:matrix_number].each do |error| %>
+          <% error.insert(0, "Matriculation Number ") %>
+        <% end %>
+        <%=  resource.errors.messages[:matrix_number].join(", ") %>
+      </div>
+    <% end %>
+  </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :year, "Year" %>
+  </div>
+  <div>
+    <%= f.select :year, ['Year 1', 'Year 2', 'Year 3', 'Year 4' ] ,  :include_blank => true, class: 'form-control' %>
+    <% if resource.errors.any? && resource.errors.include?(:year) %>
+      <div class="invalid-feedback d-block">
+        <%  resource.errors.messages[:year].each do |error| %>
+          <% error.insert(0, "Year ") %>
+        <% end %>
+        <%=  resource.errors.messages[:year].join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :faculty %>
+  </div>
+  <div>
+    <%= f.select :faculty, ['Faculty Of Arts & Social Sciences', 'School Of Business', 'School Of Computing', 'Faculty Of Dentistry',
+      'School Of Design & Environment', 'Faculty Of Engineering', 'Faculty Of Law', 'Yong Loo Lin School Of Medicine',
+                            'Faculty Of Science', 'Yong Siew Toh Conservatory Of Music'],  :include_blank => true %>
+    <% if resource.errors.any? && resource.errors.include?(:faculty) %>
+      <div class="invalid-feedback d-block">
+        <%  resource.errors.messages[:faculty].each do |error| %>
+          <% error.insert(0, "Faculty ") %>
+        <% end %>
+        <%=  resource.errors.messages[:faculty].join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contact_number, "Contact Number" %>
+  </div>
+  <div>
+    <%= f.text_field :contact_number %>
+    <% if resource.errors.any? && resource.errors.include?(:contact_number) %>
+      <div class="invalid-feedback d-block">
+        <%  resource.errors.messages[:contact_number].each do |error| %>
+          <% error.insert(0, "Contact Number ") %>
+        <% end %>
+        <%=  resource.errors.messages[:contact_number].join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+  </div>
+  <div>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <% if resource.errors.any? && resource.errors.include?(:email) %>
+      <div class="invalid-feedback d-block">
+        <%  resource.errors.messages[:email].each do |error| %>
+          <% if error.casecmp("is invalid") %>
+            <% error.concat(", please use your NUS email.")  %>
+          <% end %>
+          <% error.insert(0, "Email ") %>
+        <% end %>
+        <%=  resource.errors.messages[:email].join(", ") %>
+      </div>
+    <% end %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %>
+  </div>
+  <div>
     <%= f.password_field :password, autocomplete: "new-password" %>
+    <div class="invalid-feedback d-block">
+      <%  resource.errors.messages[:password].each do |error| %>
+        <% error.insert(0, "Password ") %>
+      <% end %>
+      <%=  resource.errors.messages[:password].join(", ") %>
+    </div>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %>
+  </div>
+  <div>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <div class="invalid-feedback d-block">
+      <%  resource.errors.messages[:password_confirmation].each do |error| %>
+        <% error.insert(0, "Password confirmation") %>
+      <% end %>
+      <%=  resource.errors.messages[:password_confirmation].join(", ") %>
+    </div>
   </div>
 
   <div class="field">

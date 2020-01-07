@@ -8,12 +8,18 @@ class ChallengeStatementsController < ApplicationController
     @challenge_statements = ChallengeStatement.all
   end
 
+  def submit
+    @challenge_statements = ChallengeStatement.all
+    @challenge_statement = nil
+    @submission = nil
+  end
+
   # GET /challenge_statements/1
   # GET /challenge_statements/1.json
   def show
     if user_signed_in?
       if current_user.admin
-        @submissions = @challenge_statement.submissions
+        @submissions = @challenge_statement.submissions.all
       else
         @submissions = @challenge_statement.submissions.where(:user_id => current_user.id)
       end

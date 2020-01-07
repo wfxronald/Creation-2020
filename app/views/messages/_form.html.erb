@@ -1,32 +1,36 @@
 <%= form_with(model: @message, url: create_message_url, local: true) do |form| %>
 
-  <div class="field asterisk">
-    <%= form.label :name, 'Your Name' %>
+  <div>
+    <div class="field asterisk">
+      <%= form.label :name, 'Your Name' %>
+    </div>
+
+    <div>
+      <%= form.text_field :name, class: 'form-control' %>
+      <% if @message.errors.any? && @message.errors.include?(:name) %>
+        <div class="invalid-feedback d-block">
+          <%  @message.errors.messages[:name].each do |error| %>
+            <% error.insert(0, "Name ") %>
+          <% end %>
+          <%=  @message.errors.messages[:name].join(", ") %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div>
-    <%= form.text_field :name, class: 'form-control' %>
-    <% if @message.errors.any? && @message.errors.include?(:name) %>
-      <div class="invalid-feedback d-block">
-        <%  @message.errors.messages[:name].each do |error| %>
-          <% error.insert(0, "Name ") %>
-        <% end %>
-        <%=  @message.errors.messages[:name].join(", ") %>
-      </div>
-    <% end %>
-  </div>
+    <div class="field asterisk">
+      <%= form.label :user_email, 'Email Address' %>
+    </div>
 
-  <div class="field asterisk">
-    <%= form.label :user_email, 'Email Address' %>
-  </div>
-
-  <div>
-    <%= form.text_field :user_email, class: 'form-control' %>
-    <% if @message.errors.any? && @message.errors.include?(:user_email) %>
-      <div class="invalid-feedback d-block">
-        <%=  @message.errors.messages[:user_email].join(", ") %>
-      </div>
-    <% end %>
+    <div>
+      <%= form.text_field :user_email, class: 'form-control' %>
+      <% if @message.errors.any? && @message.errors.include?(:user_email) %>
+        <div class="invalid-feedback d-block">
+          <%=  @message.errors.messages[:user_email].join(", ") %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div class="field asterisk">
