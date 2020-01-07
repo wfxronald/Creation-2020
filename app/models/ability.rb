@@ -32,6 +32,9 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
     if user.present? && !user.admin
       can :manage, Submission, user_id: user.id
+      cannot :manage, Submission do |submission|
+        !submission.challenge_statement_id.in?(user.joined_challenge_statement)
+      end
       can :read, ChallengeStatement
       can :join, ChallengeStatement
       can :create, MailingList

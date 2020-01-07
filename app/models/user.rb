@@ -11,4 +11,8 @@ class User < ApplicationRecord
     admin
   end
 
+  def has_joined_challenge?(id)
+    id.in?(joined_challenge_statement)
+  end
+
 end

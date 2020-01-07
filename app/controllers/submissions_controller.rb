@@ -1,6 +1,7 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+  load_and_authorize_resource :challenge_statement
+  load_and_authorize_resource :submission, through: :challenge_statement
 
   # GET /submissions
   # GET /submissions.json
@@ -26,6 +27,8 @@ class SubmissionsController < ApplicationController
   def create
     @challenge_statement = ChallengeStatement.find(params[:challenge_statement_id])
     @submission = @challenge_statement.submissions.new(submission_params)
+    #@submission.assign_attributes( {:challenge_statement_id => @challenge_statement.id} )
+    #authorize! :create, @submission
     @submission.user_id = current_user.id
     respond_to do |format|
       if @submission.save

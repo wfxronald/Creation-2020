@@ -2,12 +2,10 @@ Rails.application.routes.draw do
   resources :mailing_lists
 
   resources :challenge_statements do
+    post 'join', on: :member
     resources :submissions
   end
 
-  resources :challenge_statements do
-    post 'join', on: :member
-  end
   #static-pages
   get 'static_pages/home'
   get 'static_pages/faq'

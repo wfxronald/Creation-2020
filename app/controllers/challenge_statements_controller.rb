@@ -72,6 +72,7 @@ class ChallengeStatementsController < ApplicationController
   def join
     if user_signed_in?
       current_user.joined_challenge_statement.push(@challenge_statement.id)
+      current_user.save!
       redirect_to challenge_statement_path(@challenge_statement)
     else
       redirect_to new_user_session_path, notice: "Please sign in to continue."
@@ -86,6 +87,6 @@ class ChallengeStatementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def challenge_statement_params
-      params.require(:challenge_statement).permit(:title, :description)
+      params.require(:challenge_statement).permit(:title, :description, :zip)
     end
 end
