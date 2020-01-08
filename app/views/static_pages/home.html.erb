@@ -1,2 +1,221 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<!-- Download the font for the page -->
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+
+<!-- Style tag should be refactored into a CSS file-->
+<style>
+	.container {
+		padding-bottom: 3%;
+	}
+
+	* {
+    	font-family: Raleway;
+  	}
+
+  	p {
+  		font-weight: 700;
+  	}
+
+  	.key-visual {
+  		margin-top: -10%;
+  		margin-bottom: -23%;
+  	}
+
+  	.over-homepage-green {
+        width:100%; 
+        height:100%; 
+        background-image:url(<%= image_path("homepage-green.png") %>);
+  		background-size: 100% 100%;
+ 	}
+
+  	.first-title {
+  		border-left: 3px solid white;
+  		font-size: 200%;
+  		font-weight: 900;
+  		color: white;
+  		letter-spacing: 4px;
+  		padding-left: 1.5%;
+  	}
+
+  	.first-title-padding {
+  		padding-top: 15%;
+  		padding-left: 3%;
+  	}
+
+  	.challenge-statement-padding {
+  		padding-left: 3%;
+  		padding-right: 3%;
+  		padding-top: 3%;
+  		padding-bottom: 27%;
+  	}
+
+  	.challenge-statement-title {
+  		font-size: 114%;
+  		font-weight: 900;
+  		color: #18B68B;
+  		letter-spacing: 2px;
+  	}
+  	
+  	.challenge-statement-text {
+  		color: black;
+  	}
+
+  	.over-homepage-red {
+ 	    width:100%; 
+        height:100%; 
+        background-image:url(<%= image_path("homepage-red-box.png") %>);
+        background-size: 100% 100%;
+ 	}
+
+  	.second-title-padding {
+  		padding-right: 20px;
+  	}
+
+  	.second-title {
+  		border-right: 3px solid #F26648;	
+  		font-size: 200%;
+  		font-weight: 900;
+  		color: #F26648;
+  		letter-spacing: 4px;
+  		text-align: right;
+  		padding-right: 1.5%;
+  		margin-top: -15%;
+  	}
+
+  	.timeline-intro {
+  		color: #F26648;
+  		text-align: right;
+  		padding-right: 1.5%;
+  	}
+
+  	.timeline {
+  		padding-left: 10%;
+  		padding-right: 3%;
+  		padding-top: 6%;
+  		padding-bottom: 4%;
+  		color: white;
+  	}
+
+  	.timeline-number {
+  		padding-top: 8%;
+  		padding-left: 12%;
+  		font-weight: 900;
+  		font-size: 500%;
+  		color: white; 
+  	}
+
+  	.prize-image {
+  		margin-top: -11%;
+  	}
+
+  	.page-foot {
+  		background-color: #F26648;
+  		padding-top: 4px;
+  		padding-bottom: 4px;
+  		text-align: center;
+  	}
+
+  	.last-link {
+  		font-weight: 900;
+  		letter-spacing: 4px;
+  		color: white;
+  		font-size: 200%;
+  	}
+</style>
+
+<div class="container">
+	<p class="text-right key-visual">
+		<%= image_tag("key-visual.png", width: "100%", height: "100%") %>
+	</p>
+
+	<div class="over-homepage-green">
+		
+		<div class = "first-title-padding">
+			<h1 class="first-title">
+				OVERVIEW<br>
+				OF<br>
+				CHALLENGES
+			</h1>
+		</div>
+
+		<div class="row challenge-statement-padding">
+		    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+		        <div class="card">
+		            <div class="card-body">
+		                <h5 class="card-title challenge-statement-title">CHALLENGE STATEMENT 1</h5>
+		                <p class="card-text challenge-statement-text">
+		                	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		            	</p>
+		                <a href="#" class="btn btn-primary">Join now!</a>
+		            </div>
+		        </div>
+		    </div>
+
+		  	<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+		        <div class="card">
+		            <div class="card-body">
+		                <h5 class="card-title challenge-statement-title">CHALLENGE STATEMENT 2</h5>
+		                <p class="card-text challenge-statement-text">
+		                	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		            	</p>
+		                <a href="#" class="btn btn-primary">Join now!</a>
+		            </div>
+		        </div>
+		    </div>
+
+		    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+		        <div class="card">
+		            <div class="card-body">
+		                <h5 class="card-title challenge-statement-title">CHALLENGE STATEMENT 3</h5>
+		                <p class="card-text challenge-statement-text">
+		                	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		            	</p>
+		                <a href="#" class="btn btn-primary">Join now!</a>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+
+	</div>
+
+	<div class="second-title-padding">
+		<h1 class="second-title">
+			COMPETITION <br>
+			TIMELINE
+		</h1>
+	</div>
+
+	<p class="timeline-intro">Some information or introduction here</p>
+
+	<div class="row">
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 over-homepage-red">
+			<h2 class="timeline-number">1</h2>
+			<p class="timeline">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+		    </p>
+		</div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 over-homepage-red">
+			<h2 class="timeline-number">2</h2>
+			<p class="timeline">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+		    </p>
+		</div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 over-homepage-red">
+			<h2 class="timeline-number">3</h2>
+			<p class="timeline">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+		    </p>
+		</div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 over-homepage-red">
+			<h2 class="timeline-number">4</h2>
+			<p class="timeline">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+		    </p>
+		</div>
+	</div>
+	
+	<div class="prize-image">
+		<%= image_tag("homepage-orange.png", width: "100%", height: "100%") %>
+	</div>
+
+	<div class="page-foot"><a href="#" class="last-link">ANY QUESTIONS?</a></div>
+</div>
