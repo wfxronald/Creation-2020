@@ -16,4 +16,8 @@ class User < ApplicationRecord
     id.in?(joined_challenge_statement)
   end
 
+  def has_submit_for_joined_challenge?(submitted,userd)
+    submitted.all.where(:user_id => userd.id).exists?
+  end
+
 end

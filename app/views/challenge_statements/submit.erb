@@ -1,8 +1,18 @@
 <h1>Challenge Statements</h1>
 
 <% @challenge_statements.each do |challenge_statement| %>
-  <td><%= challenge_statement.title %></td>
+  <h2><%= "Submissions for " %><%= challenge_statement.title %></h2>
   <% @challenge_statement = challenge_statement %>
-  <% @submission = @challenge_statement.submissions.where(:user_id => current_user.id) %>
-  <%= render "submissions/index" %>
+  <% if current_user.admin? %>
+    <% @submissions = @challenge_statement.submissions.all %>
+    <% @not_submitted_user = [] %>
+    <% @users.each do |user| %>
+      <% if @challenge_statement.id.in?(user.joined_challenge_statement) && !user.has_submit_for_joined_challenge?(@submissions,user) %>
+         <% @not_submitted_user.push(user) %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <% @submissions = @challenge_statement.submissions.where(:user_id => current_user.id) %>
+  <% end %>
+  <%= render "submissions/homepage" %>
 <% end %>

@@ -11,7 +11,12 @@ class ChallengeStatementsController < ApplicationController
   def submit
     @challenge_statements = ChallengeStatement.all
     @challenge_statement = nil
-    @submission = nil
+    @submissions = nil
+    if current_user.admin
+      @users = User.all.where(:admin => false)
+      #not_submitted_user refers to users that have joined and yet to  submit
+      @not_submitted_user = nil
+    end
   end
 
   # GET /challenge_statements/1

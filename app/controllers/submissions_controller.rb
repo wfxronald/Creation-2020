@@ -14,7 +14,7 @@ class SubmissionsController < ApplicationController
   # GET /submit/new
   def new
     @challenge_statement = ChallengeStatement.find(params[:challenge_statement_id])
-    @submission = @challenge_statement.submit.new
+    @submission = @challenge_statement.submissions.new
     @submission.user_id = current_user.id
   end
 
@@ -26,7 +26,7 @@ class SubmissionsController < ApplicationController
   # POST /submit.json
   def create
     @challenge_statement = ChallengeStatement.find(params[:challenge_statement_id])
-    @submission = @challenge_statement.submit.new(submission_params)
+    @submission = @challenge_statement.submissions.new(submission_params)
     #@submission.assign_attributes( {:challenge_statement_id => @challenge_statement.id} )
     #authorize! :create, @submission
     @submission.user_id = current_user.id
@@ -71,7 +71,7 @@ class SubmissionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_submission
       @challenge_statement = ChallengeStatement.find(params[:challenge_statement_id])
-      @submission = @challenge_statement.submit.find(params[:id])
+      @submission = @challenge_statement.submissions.find(params[:id])
     end
 
 
