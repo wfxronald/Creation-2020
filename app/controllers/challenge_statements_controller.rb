@@ -14,13 +14,13 @@ class ChallengeStatementsController < ApplicationController
     @submissions = nil
     if current_user.admin
       @users = User.all.where(:admin => false)
-      #not_submitted_user refers to users that have joined and yet to  submit
+      #not_submitted_user refers to users that have joined and yet to submit
       @not_submitted_user = nil
     end
   end
 
   # GET /challenge_statements/1
-  # GET /challenge_statements/1.json
+  # GET /challenge_statements/1.jsons
   def show
     if user_signed_in?
       if current_user.admin

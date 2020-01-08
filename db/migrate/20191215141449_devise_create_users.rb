@@ -5,7 +5,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
     create_table :users do |t|
       ## Database authenticatable
       t.string :name
-      t.string :matrix_number
+      t.string :nusnet
       t.string :faculty
       t.string :year
       t.integer :contact_number

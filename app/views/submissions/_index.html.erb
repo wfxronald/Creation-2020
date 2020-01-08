@@ -14,7 +14,6 @@
     <tr>
       <td> <%= link_to submission.file.filename, rails_blob_path(submission.file, disposition: 'attachment') %></td>
       <td><%= submission.user.email %></td>
-      <td><%= link_to 'Show', challenge_statement_submission_path(@challenge_statement, submission) %></td>
       <% if !current_user.admin %>
         <td><%= link_to 'Edit',  edit_challenge_statement_submission_path(@challenge_statement, submission) %></td>
         <td><%= link_to 'Destroy', challenge_statement_submission_path(@challenge_statement, submission), method: :delete, data: { confirm: 'Are you sure?' } %></td>

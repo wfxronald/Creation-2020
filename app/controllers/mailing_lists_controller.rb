@@ -21,7 +21,7 @@ class MailingListsController < ApplicationController
   def create
     @mailing_list = MailingList.new(mailing_list_params)
     if @mailing_list.save
-        redirect_to new_message_path, notice: 'You have subscribed to our Mailing List'
+      redirect_to new_message_path, notice: 'You have subscribed to our Mailing List'
     else
       @message = Message.new
       render template: "messages/new"

@@ -23,7 +23,7 @@
 
 <% if user_signed_in? %>
   <% if current_user.admin %>
-    <%= button_to 'Edit', edit_challenge_statement_path(@challenge_statement) %>
+    <%= button_to 'Edit', edit_challenge_statement_path(@challenge_statement), :method => :get %>
   <% end %>
 <% end %>
 

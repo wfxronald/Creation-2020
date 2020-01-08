@@ -19,16 +19,16 @@
   </div>
 
   <div class="field asterisk">
-    <%= f.label :matrix_number, "Matriculation Number" %>
+    <%= f.label :nusnet, "NUSNET ID" %>
   </div>
   <div>
-    <%= f.text_field :matrix_number, class: 'form-control' %>
-    <% if resource.errors.any? && resource.errors.include?(:matrix_number) %>
+    <%= f.text_field :nusnet, class: 'form-control' %>
+    <% if resource.errors.any? && resource.errors.include?(:nusnet) %>
       <div class="invalid-feedback d-block">
-        <%  resource.errors.messages[:matrix_number].each do |error| %>
+        <%  resource.errors.messages[:nusnet].each do |error| %>
           <% error.insert(0, "Matriculation Number ") %>
         <% end %>
-        <%=  resource.errors.messages[:matrix_number].join(", ") %>
+        <%=  resource.errors.messages[:nusnet].join(", ") %>
       </div>
     <% end %>
   </div>

@@ -43,6 +43,7 @@ class Ability
       can :read, Submission
       can :manage, ChallengeStatement
       can :manage, MailingList
+      can :manage, User
     else
       can :read, ChallengeStatement
       can :join, ChallengeStatement

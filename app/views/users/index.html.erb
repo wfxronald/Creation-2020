@@ -1,0 +1,43 @@
+<h1>All Users</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Matriculation Number</th>
+    <th>Faculty</th>
+    <th>Year</th>
+    <th>Contact Number</th>
+    <th>Email</th>
+    <% @challenge_statements.each do |challenge_statement| %>
+      <th><%=  "Challenge Statement " + challenge_statement.id.to_s %> </th>
+    <% end %>
+    <th colspan="9"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+    <% @submissions = user.submissions %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.matrix_number %></td>
+      <td><%= user.faculty %></td>
+      <td><%= user.year %></td>
+      <td><%= user.contact_number %></td>
+      <td><%= user.email %></td>
+      <% @challenge_statements.each do |challenge_statement| %>
+        <% if user.has_joined_challenge?(challenge_statement.id) && @submissions.where(:challenge_statement_id => challenge_statement.id).exists? %>
+          <% submission = @submissions.where(:challenge_statement_id => challenge_statement.id).first %>
+          <td><%= link_to submission.file.filename, rails_blob_path(submission.file, disposition: 'attachment') %></td>
+        <% elsif user.has_joined_challenge?(challenge_statement.id) %>
+          <td>No Submissions</td>
+        <% else %>
+          <td>Did not join</td>
+        <% end  %>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>
+
+<br>

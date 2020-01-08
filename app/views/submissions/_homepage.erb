@@ -1,8 +1,10 @@
 <table>
   <thead>
   <tr>
-    <th>File</th>
-    <th>User</th>
+    <th>File
+    <% if current_user.admin %>
+      <th>User</th>
+    <% end %>
     <th colspan="3"></th>
   </tr>
   </thead>
@@ -11,8 +13,9 @@
   <% @submissions.each do |submission| %>
     <tr>
       <td> <%= link_to submission.file.filename, rails_blob_path(submission.file, disposition: 'attachment') %></td>
-      <td><%= submission.user.email %></td>
-      <td><%= button_to 'Show', challenge_statement_submission_path(@challenge_statement, submission), :method => :get %></td>
+      <% if current_user.admin %>
+         <td><%= submission.user.email %></td>
+      <% end %>
       <% if !current_user.admin %>
         <td><%= link_to 'Edit',  edit_challenge_statement_submission_path(@challenge_statement, submission) %></td>
         <td><%= link_to 'Destroy', challenge_statement_submission_path(@challenge_statement, submission), method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -46,7 +49,9 @@
 <br>
 
 <% if user_signed_in? %>
-  <% if !@submissions.any?{|submission| submission.user_id == current_user.id } && !current_user.admin && @challenge_statement.id.in?(current_user.joined_challenge_statement) %>
-    <%= link_to 'Add a Submission',  new_challenge_statement_submission_path(@challenge_statement) %>
+  <% if !current_user.has_submit_for_joined_challenge?(@submissions,current_user) && !current_user.admin && current_user.has_joined_challenge?(@challenge_statement.id) %>
+    <%= button_to 'Add a Submission',  new_challenge_statement_submission_path(@challenge_statement), :method => :get %>
+  <% elsif !current_user.admin && !current_user.has_joined_challenge?(@challenge_statement.id) %>
+    <%=  button_to "Join Challenge Statement", join_challenge_statement_path(@challenge_statement) %>
   <% end %>
 <% end %>

@@ -1,15 +1,10 @@
 class SubmissionsController < ApplicationController
-  before_action :set_submission, only: [:show, :edit, :update, :destroy]
+  before_action :set_submission, only: [:edit, :update, :destroy]
   load_and_authorize_resource :challenge_statement
   load_and_authorize_resource :submission, through: :challenge_statement
 
   # GET /submit
   # GET /submit.json
-
-  # GET /submit/1
-  # GET /submit/1.json
-  def show
-  end
 
   # GET /submit/new
   def new
@@ -33,8 +28,7 @@ class SubmissionsController < ApplicationController
     respond_to do |format|
       if @submission.save
         SubmissionMailer.submit_upload(@submission).deliver_now
-        format.html { redirect_to @challenge_statement, notice: 'Submission was successfully created.' }
-        format.json { render :show, status: :created, location: @submission }
+        format.html { redirect_to all_submissions_path, notice: 'Submission was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @submission.errors, status: :unprocessable_entity }
@@ -48,8 +42,7 @@ class SubmissionsController < ApplicationController
     respond_to do |format|
       if @submission.update(submission_params)
         SubmissionMailer.submit_upload(@submission).deliver_now
-        format.html { redirect_to @challenge_statement, notice: 'Submission was successfully updated.' }
-        format.json { render :show, status: :ok, location: @submission }
+        format.html { redirect_to all_submissions_path, notice: 'Submission was successfully updated.' }
       else
         format.html { render :edit }
         format.json { render json: @submission.errors, status: :unprocessable_entity }
