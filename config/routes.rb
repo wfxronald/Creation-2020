@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   #users
   devise_for :users, controllers: { sessions: 'users/sessions' }
-  get '/user' => "challenge_statements#index", :as => :user_root
+  get '/user' => "challenge_statements#submit", :as => :user_root
   match '/users',   to: 'users#index',   via: 'get'
 
   #get 'users/:id/uploads' => 'users#uploads', :as => :user_uploads

@@ -26,7 +26,7 @@
     <% if resource.errors.any? && resource.errors.include?(:nusnet) %>
       <div class="invalid-feedback d-block">
         <%  resource.errors.messages[:nusnet].each do |error| %>
-          <% error.insert(0, "Matriculation Number ") %>
+          <% error.insert(0, "NUSNET ID ") %>
         <% end %>
         <%=  resource.errors.messages[:nusnet].join(", ") %>
       </div>

@@ -8,10 +8,6 @@
   <%= @challenge_statement.description %>
 </p>
 
-<% if user_signed_in? %>
-  <%= render "submissions/index" %>
-<% end %>
-
 
 <% if current_user == nil || !@challenge_statement.id.in?(current_user.joined_challenge_statement) %>
   <%=  button_to "Join Challenge Statement", join_challenge_statement_path(@challenge_statement) %>
@@ -19,6 +15,7 @@
 
 <% if current_user != nil && @challenge_statement.id.in?(current_user.joined_challenge_statement) %>
   <%= link_to "Download brief and template", rails_blob_path(@challenge_statement.zip, disposition: 'attachment') %>
+  <%= link_to "Submit a submission", all_submissions_path %>
 <% end %>
 
 <% if user_signed_in? %>
