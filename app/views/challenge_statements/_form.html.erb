@@ -1,29 +1,38 @@
 <%= form_with(model: challenge_statement, local: true) do |form| %>
-  <% if challenge_statement.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(challenge_statement.errors.count, "error") %> prohibited this challenge_statement from being saved:</h2>
-
-      <ul>
-        <% challenge_statement.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.text_field :title, class: 'form-control' %>
+    <% if challenge_statement.errors.any? && challenge_statement.errors.include?(:title) %>
+      <div class="invalid-feedback d-block">
+        <%  challenge_statement.errors.messages[:title].each do |error| %>
+          <% error.insert(0, "Title ") %>
+        <% end %>
+        <%= challenge_statement.errors.messages[:title].join(", ") %>
+      </div>
+    <% end %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+  </div>
+  <div>
+    <%= form.text_area :description, class: 'form-control' %>
+    <% if challenge_statement.errors.any? && challenge_statement.errors.include?(:description) %>
+      <div class="invalid-feedback d-block">
+        <%  challenge_statement.errors.messages[:description].each do |error| %>
+          <% error.insert(0, "Description ") %>
+        <% end %>
+        <%= challenge_statement.errors.messages[:description].join(", ") %>
+      </div>
+    <% end %>
   </div>
 
   <div class="field">
     <%= form.label :zip %>
-    <%= form.file_field :zip, direct_upload: true %>
+    <%= form.file_field :zip, direct_upload: true%>
   </div>
 
   <div class="actions">

@@ -6,6 +6,14 @@ class UsersController < ApplicationController
   def index
     @users = User.all.where(:admin => false)
     @challenge_statements = ChallengeStatement.all
+    respond_to do |format|
+      format.xlsx {
+        response.headers[
+            'Content-Disposition'
+        ] = "attachment; filename=Users.xlsx"
+      }
+      format.html { render :index }
+    end
   end
 
   def process_and_create_zip_file
