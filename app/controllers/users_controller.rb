@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     submissions = @challenge_statement.submissions
     if submissions.exists?
       # Tmp folder to store the download files from S3
-      tmp_user_folder = "tmp/folder_for_#{@challenge_statement.title}"
+      tmp_user_folder = "tmp/folder_for_#{@challenge_statement.title.downcase.gsub(/\s+/, '_')}"
       directory_length_same_as_documents = Dir["#{tmp_user_folder}/*"].length == submissions.length
       # Create a tmp folder if not exists
       FileUtils.mkdir_p(tmp_user_folder) unless Dir.exists?(tmp_user_folder)
@@ -25,10 +25,10 @@ class UsersController < ApplicationController
         # if the folder is already there, we'd get an error
         create_tmp_folder_and_store_documents(submission, tmp_user_folder, filename) unless directory_length_same_as_documents
         #---------- Convert to .zip --------------------------------------- #
-        #create_zip_from_tmp_folder(tmp_user_folder, filename) unless directory_length_same_as_documents
+        create_zip_from_tmp_folder(tmp_user_folder, filename) unless directory_length_same_as_documents
       end
         # Sends the *.zip file to be download to the client's browser
-        #send_file(Rails.root.join("#{tmp_user_folder}.zip"), :type => 'application/zip', :filename => "Files_for_#{challenge_statement.title.downcase.gsub(/\s+/, '_')}.zip", :disposition => 'attachment')
+      send_file(Rails.root.join("#{tmp_user_folder}.zip"), :type => 'application/zip', :filename => "Files_for_#{@challenge_statement.title.downcase.gsub(/\s+/, '_')}.zip", :disposition => 'attachment')
     end
   end
 
@@ -38,9 +38,9 @@ class UsersController < ApplicationController
     end
   end
 
-  #def create_zip_from_tmp_folder(tmp_user_folder, filename)
-  #  Zip::File.open("#{tmp_user_folder}.zip", Zip::File::CREATE) do |zf|
-  #    zf.add(filename, "#{tmp_user_folder}/#{filename}")
-  #  end
-  #end
+  def create_zip_from_tmp_folder(tmp_user_folder, filename)
+    Zip::File.open("#{tmp_user_folder}.zip", Zip::File::CREATE) do |zf|
+      zf.add(filename, "#{tmp_user_folder}/#{filename}")
+    end
+  end
 end

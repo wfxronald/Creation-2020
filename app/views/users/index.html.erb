@@ -44,5 +44,5 @@
 
 <% @challenge_statements.each do |challenge_statement| %>
   <% @challenge_statement = challenge_statement %>
-  <%= button_to 'Download submissions for Challenge Statement' + challenge_statement.id.to_s, download_documents_path(challenge_statement_id: @challenge_statement.id), method: :post %>
+  <%= button_to 'Download submissions for Challenge Statement ' + challenge_statement.id.to_s, download_documents_path(challenge_statement_id: @challenge_statement.id), method: :post %>
 <% end %>

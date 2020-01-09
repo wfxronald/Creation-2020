@@ -4,7 +4,7 @@
     <%= form.label :file %>
   </div>
   <div>
-    <%= form.file_field :file  %>
+    <%= form.file_field :file, direct_upload: true  %>
     <% if @submission.errors.any? && @submission.errors.include?(:file) %>
       <div class="invalid-feedback d-block">
         <%  @submission.errors.messages[:file].each do |error| %>
