@@ -33,7 +33,7 @@ class Ability
     if user.present? && !user.admin
       can :manage, Submission, user_id: user.id
       cannot :manage, Submission do |submission|
-        !submission.challenge_statement_id.in?(user.joined_challenge_statement)
+        !submission.challenge_statement_id.in?(user.joined_challenge_statement) || !ChallengeStatement.find(submission.challenge_statement_id).is_open
       end
       can :read, ChallengeStatement
       can :join, ChallengeStatement

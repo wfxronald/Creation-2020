@@ -38,7 +38,9 @@ ActiveRecord::Schema.define(version: 2020_01_06_094501) do
 
   create_table "challenge_statements", force: :cascade do |t|
     t.string "title"
+    t.string "partner_name"
     t.text "description"
+    t.boolean "is_open", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"

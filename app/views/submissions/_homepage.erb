@@ -17,8 +17,10 @@
          <td><%= submission.user.email %></td>
       <% end %>
       <% if !current_user.admin %>
-        <td><%= button_to 'Edit Submission',  edit_challenge_statement_submission_path(@challenge_statement, submission) , :method => :get%></td>
-        <td><%= button_to 'Delete Submission', challenge_statement_submission_path(@challenge_statement, submission), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if @challenge_statement.is_open %>
+          <td><%= button_to 'Edit Submission',  edit_challenge_statement_submission_path(@challenge_statement, submission) , :method => :get%></td>
+          <td><%= button_to 'Delete Submission', challenge_statement_submission_path(@challenge_statement, submission), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       <% end %>
     </tr>
   <% end %>
@@ -49,9 +51,13 @@
 <br>
 
 <% if user_signed_in? %>
-  <% if !current_user.has_submit_for_joined_challenge?(@submissions,current_user) && !current_user.admin && current_user.has_joined_challenge?(@challenge_statement.id) %>
-    <%= button_to 'Add a Submission',  new_challenge_statement_submission_path(@challenge_statement), :method => :get %>
-  <% elsif !current_user.admin && !current_user.has_joined_challenge?(@challenge_statement.id) %>
-    <%=  button_to "Join Challenge Statement", join_challenge_statement_path(@challenge_statement) %>
+  <% if @challenge_statement.is_open %>
+    <% if !current_user.has_submit_for_joined_challenge?(@submissions,current_user) && !current_user.admin && current_user.has_joined_challenge?(@challenge_statement.id) %>
+      <%= button_to 'Add a Submission',  new_challenge_statement_submission_path(@challenge_statement), :method => :get %>
+    <% elsif !current_user.admin && !current_user.has_joined_challenge?(@challenge_statement.id) %>
+      <%=  button_to "Join Challenge Statement", join_challenge_statement_path(@challenge_statement) %>
+    <% end %>
+  <% else %>
+    <%= "Thank you for your interest in Creation 2020, currently we are no longer accepting submissions for this Challenge Statement!" %>
   <% end %>
 <% end %>

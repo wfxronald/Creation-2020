@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :challenge_statements do
     post 'join', on: :member
+    post 'close', on: :member
     resources :submissions
   end
   match 'submit', to: 'challenge_statements#submit', as: 'all_submissions', :via => :get

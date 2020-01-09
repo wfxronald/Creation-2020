@@ -15,7 +15,7 @@
     <% end %>
   </div>
 
-  <%= form.hidden_field  :title, value: @challenge_statement.title + "_" + current_user.name %>
+  <%= form.hidden_field  :title, value: @challenge_statement.partner_name + "_" + current_user.name %>
   <div class="actions">
     <%= form.submit %>
   </div>

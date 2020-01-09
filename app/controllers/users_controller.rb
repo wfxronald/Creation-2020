@@ -25,6 +25,9 @@ class UsersController < ApplicationController
       tmp_user_folder = "tmp/folder_for_#{@challenge_statement.title.downcase.gsub(/\s+/, '_')}"
       directory_length_same_as_documents = Dir["#{tmp_user_folder}/*"].length == submissions.length
       # Create a tmp folder if not exists
+      if Dir.exists?(tmp_user_folder)
+        FileUtils.rm_r(tmp_user_folder)
+      end
       FileUtils.mkdir_p(tmp_user_folder) unless Dir.exists?(tmp_user_folder)
       # Download and save documents to our tmp folder
       submissions.each do |submission|
@@ -47,6 +50,10 @@ class UsersController < ApplicationController
   end
 
   def create_zip_from_tmp_folder(tmp_user_folder, filename)
+    tmp_user_zip = "#{tmp_user_folder}.zip"
+    if File.exists?(tmp_user_zip)
+      FileUtils.remove_file(tmp_user_zip,true)
+    end
     Zip::File.open("#{tmp_user_folder}.zip", Zip::File::CREATE) do |zf|
       zf.add(filename, "#{tmp_user_folder}/#{filename}")
     end

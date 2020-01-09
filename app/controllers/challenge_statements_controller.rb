@@ -1,5 +1,5 @@
 class ChallengeStatementsController < ApplicationController
-  before_action :set_challenge_statement, only: [:show, :edit, :update, :destroy, :join]
+  before_action :set_challenge_statement, only: [:show, :edit, :update, :destroy, :join, :close]
   load_and_authorize_resource
 
   # GET /challenge_statements
@@ -90,6 +90,19 @@ class ChallengeStatementsController < ApplicationController
     end
   end
 
+  def close
+    if user_signed_in? && current_user.admin
+      if @challenge_statement.is_open
+        @challenge_statement.is_open = false
+        @challenge_statement.save!
+      else
+        @challenge_statement.is_open = true
+        @challenge_statement.save!
+      end
+      redirect_to challenge_statement_path(@challenge_statement)
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_challenge_statement
@@ -98,6 +111,6 @@ class ChallengeStatementsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def challenge_statement_params
-      params.require(:challenge_statement).permit(:title, :description, :zip)
+      params.require(:challenge_statement).permit(:title, :description, :partner_name, :zip)
     end
 end

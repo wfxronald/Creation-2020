@@ -16,6 +16,21 @@
   </div>
 
   <div class="field">
+    <%= form.label :partner_name %>
+  </div>
+  <div>
+    <%= form.text_field :partner_name, class: 'form-control' %>
+    <% if challenge_statement.errors.any? && challenge_statement.errors.include?(:partner_name) %>
+      <div class="invalid-feedback d-block">
+        <%  challenge_statement.errors.messages[:partner_name].each do |error| %>
+          <% error.insert(0, "Partner Name ") %>
+        <% end %>
+        <%= challenge_statement.errors.messages[:partner_name].join(", ") %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="field">
     <%= form.label :description %>
   </div>
   <div>
