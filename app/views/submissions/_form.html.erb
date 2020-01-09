@@ -1,21 +1,21 @@
 <%= form_with(model: @submission, url: [@challenge_statement, @submission], local: true) do |form| %>
-  <% if @submission.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
-
-      <ul>
-        <% @submission.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
     <%= form.label :file %>
-    <%= form.file_field :file %>
+  </div>
+  <div>
+    <%= form.file_field :file  %>
+    <% if @submission.errors.any? && @submission.errors.include?(:file) %>
+      <div class="invalid-feedback d-block">
+        <%  @submission.errors.messages[:file].each do |error| %>
+          <% error.insert(0, "File ") %>
+        <% end %>
+        <%=  @submission.errors.messages[:file].join(", ") %>
+      </div>
+    <% end %>
   </div>
 
+  <%= form.hidden_field  :title, value: @challenge_statement.title + "_" + current_user.name %>
   <div class="actions">
     <%= form.submit %>
   </div>

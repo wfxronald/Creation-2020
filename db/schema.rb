@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_01_06_094501) do
   end
 
   create_table "submissions", force: :cascade do |t|
+    t.string "title"
     t.bigint "challenge_statement_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions' }
   get '/user' => "challenge_statements#submit", :as => :user_root
   match '/users',   to: 'users#index',   via: 'get'
-
+  post '/download-attachments', to: "users#process_and_create_zip_file", as: 'download_documents'
   #get 'users/:id/uploads' => 'users#uploads', :as => :user_uploads
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
