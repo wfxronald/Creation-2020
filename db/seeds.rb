@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 user = User.create!(name: "Example Admin",
-                    nusnet: "A0189174R",
+                    nusnet: "A0189174",
              faculty: "School Of Computing",
              year: "Year 1",
              contact_number: "84265038",
@@ -21,7 +21,7 @@ challenge = user.challenge_statements.create!(title: "Challenge Statement 2", pa
 challenge.zip.attach(io: File.open('app/assets/seed/ui-screenshot.jpg'), filename: 'ui-screenshot.jpg')
 
 User.create!(name: "Example Student",
-             nusnet: "A0189174B",
+             nusnet: "A0189173",
              faculty: "School Of Business",
              year: "Year 4",
              contact_number: "84265038",
