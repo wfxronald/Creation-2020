@@ -41,3 +41,18 @@
 input[type=file][data-direct-upload-url][disabled] {
   display: none;
 }
+
+@font-face {
+  font-family: "Hey November";
+  src: font-url('Hey-November.otf') format("truetype");
+}
+
+@font-face {
+  font-family: "Raleway Black";
+  src: font-url('Raleway-Black.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "Raleway Semibold";
+  src: font-url('Raleway-SemiBold.ttf') format("truetype");
+}
