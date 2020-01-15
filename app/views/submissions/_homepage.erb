@@ -18,8 +18,7 @@
       <% end %>
       <% if !current_user.admin %>
         <% if @challenge_statement.is_open %>
-          <td><%= button_to 'Edit Submission',  edit_challenge_statement_submission_path(@challenge_statement, submission) , :method => :get%></td>
-          <td><%= button_to 'Delete Submission', challenge_statement_submission_path(@challenge_statement, submission), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= button_to 'Re-upload Submission',  edit_challenge_statement_submission_path(@challenge_statement, submission) , :method => :get%></td>
         <% end %>
       <% end %>
     </tr>

@@ -1,5 +1,5 @@
 class SubmissionsController < ApplicationController
-  before_action :set_submission, only: [:edit, :update, :destroy]
+  before_action :set_submission, only: [:edit, :update]
   load_and_authorize_resource :challenge_statement
   load_and_authorize_resource :submission, through: :challenge_statement
 
@@ -50,15 +50,6 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  # DELETE /submit/1
-  # DELETE /submit/1.json
-  def destroy
-    @submission.destroy
-    respond_to do |format|
-      format.html { redirect_to all_submissions_path, notice: 'Submission was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

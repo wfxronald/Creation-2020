@@ -28,15 +28,20 @@ class UsersController < ApplicationController
       if Dir.exists?(tmp_user_folder)
         FileUtils.rm_r(tmp_user_folder)
       end
+
       FileUtils.mkdir_p(tmp_user_folder) unless Dir.exists?(tmp_user_folder)
+      tmp_user_zip = "#{tmp_user_folder}.zip"
+      if File.exists?(tmp_user_zip)
+        FileUtils.remove_file(tmp_user_zip,true)
+      end
       # Download and save documents to our tmp folder
       submissions.each do |submission|
         filename = submission.title
         # User should be able to download files if not yet removed from tmp folder
         # if the folder is already there, we'd get an error
-        create_tmp_folder_and_store_documents(submission, tmp_user_folder, filename) unless directory_length_same_as_documents
+        create_tmp_folder_and_store_documents(submission, tmp_user_folder, filename)
         #---------- Convert to .zip --------------------------------------- #
-        create_zip_from_tmp_folder(tmp_user_folder, filename) unless directory_length_same_as_documents
+        create_zip_from_tmp_folder(tmp_user_folder, filename)
       end
         # Sends the *.zip file to be download to the client's browser
       send_file(Rails.root.join("#{tmp_user_folder}.zip"), :type => 'application/zip', :filename => "Files_for_#{@challenge_statement.title.downcase.gsub(/\s+/, '_')}.zip", :disposition => 'attachment')
@@ -50,10 +55,6 @@ class UsersController < ApplicationController
   end
 
   def create_zip_from_tmp_folder(tmp_user_folder, filename)
-    tmp_user_zip = "#{tmp_user_folder}.zip"
-    if File.exists?(tmp_user_zip)
-      FileUtils.remove_file(tmp_user_zip,true)
-    end
     Zip::File.open("#{tmp_user_folder}.zip", Zip::File::CREATE) do |zf|
       zf.add(filename, "#{tmp_user_folder}/#{filename}")
     end

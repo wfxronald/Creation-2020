@@ -7,7 +7,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, #:confirmable,
          :recoverable, :rememberable, :validatable
   validates :rules_and_regulations, acceptance: true
-  validates :name, :nusnet, :faculty, :year, :contact_number, presence: true
+  validates :name, :faculty, :year, :contact_number, presence: true
+  validates :nusnet, length: {is: 8}
   def is_admin?
     admin
   end

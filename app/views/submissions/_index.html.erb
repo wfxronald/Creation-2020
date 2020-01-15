@@ -16,7 +16,6 @@
       <td><%= submission.user.email %></td>
       <% if !current_user.admin %>
         <td><%= link_to 'Edit',  edit_challenge_statement_submission_path(@challenge_statement, submission) %></td>
-        <td><%= link_to 'Destroy', challenge_statement_submission_path(@challenge_statement, submission), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
     </tr>
   <% end %>
