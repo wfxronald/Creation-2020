@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :rules_and_regulations, acceptance: true
   validates :name, :faculty, :year, :contact_number, presence: true
-  validates :nusnet, length: {is: 8}
+  validates :nusnet, length: {is: 8}, uniqueness: { case_sensitive: false }
   def is_admin?
     admin
   end
