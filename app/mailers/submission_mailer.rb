@@ -9,6 +9,6 @@ class SubmissionMailer < ApplicationMailer
     @title = submission.challenge_statement.title
     @upload = submission.file.filename
     @update = submission.updated_at
-    mail to: submission.user.email, from: "dandford@gmail.com"
+    mail to: submission.user.email, from: "creation@nussucommit.com"
   end
 end
