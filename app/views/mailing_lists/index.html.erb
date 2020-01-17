@@ -1,3 +1,16 @@
+<script>
+    $(document).ready(function(){
+        $(".click .copy").click(function(event){
+            // var $tempElement = $("<input>");
+            // $("body").append($tempElement);
+            // $tempElement.val($(this).closest(".click").find("span").text()).select();
+            document.getElementById("to-copy").select();
+            document.execCommand("Copy");
+            // $tempElement.remove();
+        });
+    });
+</script>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Mailing Lists</h1>
@@ -9,13 +22,12 @@
       <th>
         <div class="click">
           <button class="copy">Copy all emails</button>
-          <span style="display: none;"><%= @email %></span>
+          <textarea id="to-copy" style='display:block; width:0; height:0; opacity: 0;'><%= @email %></textarea>
         </div>
       </th>
       <th colspan="1"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @mailing_lists.each do |mailing_list| %>
       <tr>

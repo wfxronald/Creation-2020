@@ -6,12 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 user = User.create!(name: "Example Admin",
-                    nusnet: "A0189174",
+                    nusnet: "E0000000",
              faculty: "School Of Computing",
              year: "Year 1",
              contact_number: "84265038",
              admin: true,
-             email: "admin@u.nus.edu",
+             email: "e0324758@u.nus.edu",
              password: "password",
              password_confirmation: "password")
 
@@ -21,11 +21,11 @@ challenge = user.challenge_statements.create!(title: "Challenge Statement 2", pa
 challenge.zip.attach(io: File.open('app/assets/seed/ui-screenshot.jpg'), filename: 'ui-screenshot.jpg')
 
 User.create!(name: "Example Student",
-             nusnet: "A0189173",
+             nusnet: "E0324758",
              faculty: "School Of Business",
              year: "Year 4",
              contact_number: "84265038",
-             email: "examplestudent@u.nus.edu",
+             email: "e0319186@u.nus.edu",
              password: "password",
              password_confirmation: "password")
 

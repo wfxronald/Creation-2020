@@ -119,18 +119,19 @@
   </div>
   <div>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    <div class="invalid-feedback d-block">
-      <%  resource.errors.messages[:password_confirmation].each do |error| %>
-        <% error.insert(0, "Password confirmation") %>
-      <% end %>
-      <%=  resource.errors.messages[:password_confirmation].join(", ") %>
-    </div>
+<!--    <div class="invalid-feedback d-block">-->
+      <%#  resource.errors.messages[:password_confirmation].each do |error| %>
+        <%# error.insert(0, "Password confirmation") %>
+      <%# end %>
+      <%#=  resource.errors.messages[:password_confirmation].join(", ") %>
+<!--    </div>-->
   </div>
 
-  <div class="field">
+  <div>
     <%= f.check_box :rules_and_regulations %>
-    <%= f.label :rules_and_regulations, "I agree to abide to the #{link_to 'Rules and Regulation', static_pages_rules_path} of Creation 2020.".html_safe, :class => "checkbox inline" %>
+    <%= f.label :rules_and_regulations, "I agree to abide to the #{link_to 'Rules and Regulation', static_pages_rules_path} of Creation 2020.".html_safe, :class => "checkbox-inline" %>
   </div>
+
 
   <div class="actions">
     <%= f.submit "Sign up" %>
