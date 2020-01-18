@@ -42,6 +42,7 @@ input[type=file][data-direct-upload-url][disabled] {
   display: none;
 }
 
+<<<<<<< .merge_file_a10760
 @font-face {
   font-family: "Hey November";
   src: font-url('Hey-November.otf') format("truetype");
@@ -55,4 +56,9 @@ input[type=file][data-direct-upload-url][disabled] {
 @font-face {
   font-family: "Raleway Semibold";
   src: font-url('Raleway-SemiBold.ttf') format("truetype");
+=======
+/*Form errors */
+div.field_with_errors {
+  display: inline;
+>>>>>>> .merge_file_a03944
 }

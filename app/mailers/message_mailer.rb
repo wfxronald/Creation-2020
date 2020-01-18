@@ -7,7 +7,8 @@ class MessageMailer < ApplicationMailer
   #
   def contact_us(message)
     @body = message.body
-
-    mail to: "dandford@gmail.com", from: message.user_email #maybe include subject? Todo
+    @name = message.name
+    @email = message.user_email
+    mail to: "creation@nussucommit.com", from: "creation@nussucommit.com", :subject => "You Have a Message From Your Website"
   end
 end

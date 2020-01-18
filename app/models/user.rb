@@ -4,10 +4,12 @@ class User < ApplicationRecord
   has_many :submissions
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable, #:confirmable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :validatable
   validates :rules_and_regulations, acceptance: true
-  validates :name, :nusnet, :faculty, :year, :contact_number, presence: true
+  validates :name, :faculty, :year, presence: true
+  validates :contact_number, numericality: { only_integer: true }
+  validates :nusnet, length: {is: 8}, format: { with: /\A[E][+-]?\d+\z/, message: "must start with E followed by numbers." }, uniqueness: { case_sensitive: false }
   def is_admin?
     admin
   end
