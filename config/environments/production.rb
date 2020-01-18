@@ -69,8 +69,8 @@ Rails.application.configure do
   # config/environments/production.rb
 
   config.action_mailer.delivery_method = :smtp
-  host = 'localhost:3000'
-  config.action_mailer.default_url_options = { :host => 'localhost:3000', protocol: 'http' }
+  host = 'https://creation-2020-prod.herokuapp.com/'
+  config.action_mailer.default_url_options = { :host => 'https://creation-2020-prod.herokuapp.com', protocol: 'http' }
 
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
