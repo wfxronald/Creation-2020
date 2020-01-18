@@ -1,2 +1,111 @@
-<h1>StaticPages#faq</h1>
-<p>Find me in app/views/static_pages/faq.html.erb</p>
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Download Raleway -->
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+
+	<!-- Responsive webpage -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Download Bootstrap and dependencies -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+
+<style>
+	.title {
+		padding-top: 3%;
+		padding-bottom: 3%;
+		text-align: center;
+		font-family: "Hey November";
+		font-size: 600%;
+	}
+
+	.faq-container {
+		margin: auto;
+		max-width: 750px;
+		padding-bottom: 3%;
+	}
+
+	.question {
+		font-family: "Raleway Black";
+		text-align: center;
+	}
+
+	.answer {
+		font-family: "Raleway Semibold";
+		text-align: center;
+	}
+
+	.page-foot {
+  		background-color: #F26648;
+  		padding-top: 4px;
+  		padding-bottom: 4px;
+  		text-align: center;
+  	}
+
+  	.last-link {
+  		font-family: Raleway;
+  		font-weight: 900;
+  		letter-spacing: 4px;
+  		color: white;
+  		font-size: 200%;
+  	}
+
+  	.bold {
+  		font-weight: bold;
+  	}
+</style>
+
+<body>
+<h1 class="title">FREQUENTLY ASKED QUESTIONS</h1>
+
+<div class="faq-container">
+	<h2 class="question">1) Who is eligible to take part in CREATION 2020?</h2>
+	<p class="answer">Only NUS undergraduate students shall be eligible to participate in CREATION 2020.</p>
+	<br>
+
+	<h2 class="question">2) Are there any charges to participate in CREATION 2020?</h2>
+	<p class="answer">Participation in CREATION 2020 is FREE of charge.</p>
+	<br>
+
+	<h2 class="question">3) Can each participant participate in more than one challenge statement?</h2>
+	<p class="answer">Yes, however, each participant can submit only ONE submission per challenge statement, of which will be judged by a panel of judges during the closing ceremony on 24 February 2020.</p>
+	<br>
+
+	<h2 class="question">4) Will the judging criteria vary among the problem statement?</h2>
+	<p class="answer">Yes, assessment criteria will vary among problem statement. Participants could check the assessment criteria on <i>Rules and Regulations > Selection Process.</i></p>
+	<br>
+
+	<h2 class="question">5) Is it compulsory for the participants to attend the closing ceremony on 24 February 2020?</h2>
+	<p class="answer">Yes, participants shall be able to attend the closing ceremony on 24 February 2020 to pitch their final artwork to the panel of judges. Participants who are unable to attend the closing ceremony for the pitching session will be heavily penalized during the assessment or may face disqualification as well.</p>
+	<br>
+
+	<h2 class="question">6) Is it compulsory for the participants to attend the Advanced Photoshop Workshop on 8 February 2020?</h2>
+	<p class="answer">No, but the participants are highly encouraged to attend since this free workshop is conducted by a certified trainer from Acadia Training. Participants get to learn advanced Photoshop skills from this workshop and apply them on their designs.</p>
+	<br>
+
+	<h2 class="question">7) Must I join the competition to be able to attend the Advanced Photoshop Workshop on 8 February 2020?</h2>
+	<p class="answer">No, however, a deposit of $5 needs to be paid by the student which will be returned to the student after he/she made a submission of the designs.</p>
+	<br>
+
+	<h2 class="question">8) Can I join the competition as a team?</h2>
+	<p class="answer">No, CREATION 2020 is an individual competition.</p>
+	<br>
+
+	<h2 class="question">9) What is the Newcomer Award and who is eligible for it?</h2>
+	<p class="answer">Newcomer Award is an award given to ONE participant whose design is not a winning design for any of the challenge statements and is the judges’ favorite <u>among all the challenge statements</u>. However, only participants who have attended Cyberia Camp 2019 and/or any of the NUSSU commIT’s Adobe Photoshop Workshop (<u>excluding</u> the Advanced Photoshop Workshop on 8 February 2020) and/or any of the NUSSU commIT’s Adobe Illustrator Workshop are eligible for the Newcomer Award.</p>
+	<br>
+
+	<h2 class="question">10) Can I use a software other than Adobe Photoshop or Adobe Illustrator?</h2>
+	<p class="answer">No, participants are strictly required to use Adobe Photoshop and/or Adobe Illustrator or stated otherwise. Please check with the requirement of each challenge statement. Participants can use the computers at NUSSU commIT’s computer centers at YIH Level 3 or AS8 Level 2 to work on their designs, if they do not have the software installed on their computers.</p>
+	<br>
+</div>
+
+<div class="page-foot"><%= link_to "ANY QUESTIONS?", new_message_path, class: 'last-link' %></div>
+</body>
+</html>
