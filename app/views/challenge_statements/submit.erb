@@ -1,7 +1,29 @@
-<h1><%= current_user.name %></h1><br>
-<h2><%= current_user.faculty %></h2>
-<hr>
-<h3>Challenge Statements</h3>
+<head>
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+</head>
+
+<style>
+  * {
+    font-family: "Raleway";
+  }
+
+  .title {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    text-align: center;
+    font-family: "Hey November";
+    font-size: 600%;
+  }
+
+  .centralize {
+    text-align: center;
+    font-family: "Raleway Semibold"
+  }
+</style>
+
+<div class="container">
+<h1 class="title">SUBMISSION FOR CHALLENGE STATEMENT</h1>
+<h2 class="centralize">Hi, <%= current_user.name %> from <%= current_user.faculty %>!</h2>
 <hr>
 <% @challenge_statements.each do |challenge_statement| %>
   <h4><%= "Submissions for " %><%= challenge_statement.title %></h4>
@@ -19,3 +41,4 @@
   <% end %>
   <%= render "submissions/homepage" %>
 <% end %>
+</div>
