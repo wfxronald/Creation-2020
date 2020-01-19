@@ -21,10 +21,10 @@ challenge = user.challenge_statements.create!(title: "Challenge Statement 2", pa
 challenge.zip.attach(io: File.open('app/assets/seed/ui-screenshot.jpg'), filename: 'ui-screenshot.jpg')
 
 User.create!(name: "Example Student",
-             nusnet: "E0324758",
+             nusnet: "E0319186",
              faculty: "School Of Business",
              year: "Year 4",
-             contact_number: "84265038",
+             contact_number: "84265338",
              email: "e0319186@u.nus.edu",
              password: "password",
              password_confirmation: "password")
