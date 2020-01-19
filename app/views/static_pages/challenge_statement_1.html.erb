@@ -16,10 +16,90 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 
+<style>
+  .title {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    text-align: center;
+    font-family: "Hey November";
+    font-size: 20vmin;
+  }
+
+  .cs1-container {
+    margin: auto;
+    max-width: 750px;
+    padding-bottom: 3%;
+  }
+
+  .cs1-heading {
+    font-family: "Raleway Black";
+    text-align: center;
+  }
+
+  p {
+    font-family: "Raleway Semibold";
+    text-align: justify;
+  }
+
+  .button {
+    font-family: "Raleway";
+    background-color: #111f36;
+    border: none;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 21px;
+    padding-right: 21px;
+  }
+</style>
+
 <body>
-<p>
-  <strong>Title:Challenge Statement 1</strong>
-</p>
+<h1 class="title">2020 NUSSU Welfare Diary</h1>
+<div class="cs1-container">
+  <p>Design for the AY2020/21 Welfare Diary. The theme of the journal is jewel toned colours with writings in block letters style. The design of the journal should appeal to the NUS student community. </p>
+  <h2 class="cs1-heading">Context</h2>
+  <p>
+    The NUSSU Welfare Diary is published annually by the NUSSU Welfare Committee and is distributed during the NUS Student Life Fair to the NUS population in the month of August. 
+
+    The journal design should include:  
+      <ol>
+        <li>
+        Cover (Design to be embossed on it) 
+        <br/>
+        a) Name: NUSSU Welfare Diary 
+        <br/>
+        b) Year: (AY) 2020/2021 
+        <br/>
+        c) Dark colour(s) (e.g. navy blue, dark brown, black) with accent colour of choice 
+        <br/>
+        </li>
+        <br/>
+        <li>Front page (this belongs to…)</li>
+        <br/>
+        <li>
+        Monthly dividers: 1 page per month (Aug 2020 - Jul 2021), with jewel toned colour background of choice, and writings in block letters with font of choice. You may want to add in icons or symbols representative of the respective months to increase the visual appeal (e.g. Christmas tree for December). 
+        </li>
+      </ol>
+    <br/>
+  </p>
+  <h2 class="cs1-heading">Prizes</h2>
+  <p>First prize:</p>
+  <ul>
+    <li>Nintendo Switch and</li>
+    <li>12-months Adobe Creative Cloud for Individual Complete All Apps membership</li>
+  </ul>
+  <p>Second prize:</p>
+  <ul>
+    <li>Capitaland Voucher and</li>
+    <li>12-months Adobe Creative Cloud for Individual Complete All Apps membership</li>
+  </ul>
+  <p>Third prize:</p>
+  <ul>
+    <li>Capitaland Voucher and</li>
+    <li>12-months Adobe Creative Cloud for Individual Complete All Apps membership</li>
+  </ul>
 
 <% if current_user == nil || !@challenge_statement.id.in?(current_user.joined_challenge_statement) %>
   <% if @challenge_statement.is_open %>
@@ -29,10 +109,12 @@
   <% end %>
 <%  end %>
 
+<div style="text-align: center;">
 <% if current_user != nil && @challenge_statement.id.in?(current_user.joined_challenge_statement) %>
   <% if @challenge_statement.is_open %>
-    <%= link_to "Download brief and template", rails_blob_path(@challenge_statement.zip, disposition: 'attachment') %>
-    <%= link_to "Submit a submission", all_submissions_path %>
+    <%= button_to "Download brief and template", rails_blob_path(@challenge_statement.zip, disposition: 'attachment'), class: "button" %>
+    <br/>
+    <%= button_to "Submit a submission", all_submissions_path, class: "button" %>
   <% else %>
     <%= "Thank you for your interest in Creation 2020, currently we are no longer accepting submissions for this Challenge Statement!" %>
   <% end %>
@@ -48,7 +130,9 @@
     <% end %>
   <% end %>
 <% end %>
-
+<br/>
 <%= link_to 'Back', challenge_statements_path %>
+</div>
+</div>
 </body>
 </html>
