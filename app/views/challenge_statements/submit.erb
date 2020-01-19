@@ -19,6 +19,21 @@
     text-align: center;
     font-family: "Raleway Semibold"
   }
+
+  .page-foot {
+    background-color: #F26648;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    text-align: center;
+  }
+
+  .last-link {
+    font-family: Raleway;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: white;
+    font-size: 200%;
+  }
 </style>
 
 <div class="container">
@@ -41,4 +56,7 @@
   <% end %>
   <%= render "submissions/homepage" %>
 <% end %>
+<br><br><br>
 </div>
+
+<div class="page-foot"><%= link_to "ANY QUESTIONS?", new_message_path, class: 'last-link' %></div>
