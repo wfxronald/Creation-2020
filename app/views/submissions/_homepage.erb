@@ -1,3 +1,18 @@
+<style>
+  .button {
+    font-family: "Raleway";
+    background-color: #111f36;
+    border: none;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 21px;
+    padding-right: 21px;
+  }
+</style>
+
 <table>
   <thead>
   <tr>
@@ -12,13 +27,13 @@
   <tbody>
   <% @submissions.each do |submission| %>
     <tr>
-      <td> <%= link_to submission.file.filename, rails_blob_path(submission.file, disposition: 'attachment') %></td>
+      <td> <%= link_to submission.file.filename, rails_blob_path(submission.file, disposition: 'attachment') %> &nbsp; &nbsp; &nbsp;</td> 
       <% if current_user.admin %>
          <td><%= submission.user.email %></td>
       <% end %>
       <% if !current_user.admin %>
         <% if @challenge_statement.is_open %>
-          <td><%= button_to 'Re-upload Submission',  edit_challenge_statement_submission_path(@challenge_statement, submission) , :method => :get%></td>
+          <td><%= button_to 'REUPLOAD SUBMISSION',  edit_challenge_statement_submission_path(@challenge_statement, submission) , :method => :get, class:"button" %></td>
         <% end %>
       <% end %>
     </tr>
@@ -52,9 +67,9 @@
 <% if user_signed_in? %>
   <% if @challenge_statement.is_open %>
     <% if !current_user.has_submit_for_joined_challenge?(@submissions,current_user) && !current_user.admin && current_user.has_joined_challenge?(@challenge_statement.id) %>
-      <%= button_to 'Add a Submission',  new_challenge_statement_submission_path(@challenge_statement), :method => :get %>
+      <%= button_to 'MAKE A NEW SUBMISSION',  new_challenge_statement_submission_path(@challenge_statement), :method => :get, class:"button" %>
     <% elsif !current_user.admin && !current_user.has_joined_challenge?(@challenge_statement.id) %>
-      <%= button_to "Join Challenge Statement", join_challenge_statement_path(@challenge_statement) %>
+      <%= button_to "JOIN CHALLENGE STATEMENT", join_challenge_statement_path(@challenge_statement), class:"button" %>
     <% end %>
   <% else %>
     <%= "Thank you for your interest in Creation 2020, currently we are no longer accepting submissions for this Challenge Statement!" %>
