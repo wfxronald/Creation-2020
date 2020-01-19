@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Creation2020</title>
+    <title>CREATION 2020 - Design Competition</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= favicon_link_tag 'favicon.png' %>
   </head>
 
-  <body>
+  <body style="overflow-x: hidden; background-color: #f6f7f2;">
     <% flash.each do |type, text| %>
       <div class="<%= flash_class(type.to_sym) %>  mb-0">
         <a href="#" class="" data-dismiss="alert" aria-label="close">&times;</a>
