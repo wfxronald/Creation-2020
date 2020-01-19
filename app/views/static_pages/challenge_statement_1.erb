@@ -1,11 +1,5 @@
 <p>
-  <strong>Title:</strong>
-  <%= @challenge_statement.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @challenge_statement.description %>
+  <strong>Title:Challenge Statement 1</strong>
 </p>
 
 <% if current_user == nil || !@challenge_statement.id.in?(current_user.joined_challenge_statement) %>

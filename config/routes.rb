@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'users/index'
   resources :mailing_lists
 
-  resources :challenge_statements do
+  resources :challenge_statements, except: :show do
     post 'join', on: :member
     post 'close', on: :member
     resources :submissions, except: :destroy
@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get 'static_pages/home'
   get 'static_pages/faq'
   get 'static_pages/rules'
+  get 'static_pages/challenge_statement_1'
+  get 'static_pages/challenge_statement_2'
+  get 'static_pages/challenge_statement_3'
 
   #contact-us
   get 'contact-us', to: 'messages#new', as: 'new_message'

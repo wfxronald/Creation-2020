@@ -84,7 +84,14 @@ class ChallengeStatementsController < ApplicationController
     if user_signed_in?
       current_user.joined_challenge_statement.push(@challenge_statement.id)
       current_user.save!
-      redirect_to challenge_statement_path(@challenge_statement)
+      case @challenge_statement.id
+      when 1
+        redirect_to static_pages_challenge_statement_1_path(@challenge_statement)
+      when 2
+        redirect_to static_pages_challenge_statement_2_path(@challenge_statement)
+      else
+        redirect_to static_pages_challenge_statement_3_path(@challenge_statement)
+      end
     else
       redirect_to new_user_session_path, notice: "Please sign in to continue."
     end
@@ -99,7 +106,14 @@ class ChallengeStatementsController < ApplicationController
         @challenge_statement.is_open = true
         @challenge_statement.save!
       end
-      redirect_to challenge_statement_path(@challenge_statement)
+      case @challenge_statement.id
+      when 1
+        redirect_to static_pages_challenge_statement_1_path(@challenge_statement)
+      when 2
+        redirect_to static_pages_challenge_statement_2_path(@challenge_statement)
+      else
+        redirect_to static_pages_challenge_statement_3_path(@challenge_statement)
+      end
     end
   end
 
