@@ -39,6 +39,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   host = 'https://creation.nussucommit.com'
   config.action_mailer.default_url_options = { :host => 'https://creation.nussucommit.com', protocol: 'http' }
+  config.require_master_key = true
 
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
