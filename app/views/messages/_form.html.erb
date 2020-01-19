@@ -29,7 +29,7 @@
     display: inline-block;
   }
 
-  input[type=text], textarea {
+  input[type=text], textarea, #message_body {
     width: 450px;
     border: 2px solid #111f36;
     border-radius: 0px;
@@ -39,14 +39,28 @@
     font-family: "Raleway";
     font-weight: bold;
     letter-spacing: 2px;
+    margin-left: 7%;
   }
+
+  textarea {
+    resize: none;
+  }
+
+  img {
+    position: absolute;
+  }
+
+  .custom-form {
+    text-align: left;
+  }
+
 </style>
 
 <div class="container centralize">
 
 <%= form_with(model: @message, url: create_message_url, local: true) do |form| %>
 
-  <div class="form-group">
+  <div class="form-group custom-form">
     <div class="field asterisk">
       <%= form.label :name, class: 'hide-label' %>
       <%= image_tag("logo-username.png", height: "40px") %>
@@ -65,7 +79,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group custom-form">
     <div class="field asterisk">
       <%= form.label :user_email, class: 'hide-label' %>
       <%= image_tag("logo-email.png", height: "40px") %>
@@ -81,7 +95,7 @@
     </div>
   </div>
 
-  <div class="form-group">
+  <div class="form-group custom-form">
     <div class="field asterisk">
       <%= form.label :body, class: 'hide-label' %>
       <%= image_tag("logo-question-mark.png", height: "40px") %>

@@ -79,6 +79,10 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
+
+  .custom-a a{
+    text-decoration: underline;
+  }
 </style>
 
 <body>
@@ -93,7 +97,7 @@
       <%= f.label :name, "Full Name" %>
     </div>
     <div>
-      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.text_field :name %>
       <% if resource.errors.any? && resource.errors.include?(:name) %>
         <div class="invalid-feedback d-block">
           <%  resource.errors.messages[:name].each do |error| %>
@@ -110,7 +114,7 @@
       <%= f.label :nusnet, "NUSNET ID" %>
     </div>
     <div>
-      <%= f.text_field :nusnet, class: 'form-control' %>
+      <%= f.text_field :nusnet %>
       <% if resource.errors.any? && resource.errors.include?(:nusnet) %>
         <div class="invalid-feedback d-block">
           <%  resource.errors.messages[:nusnet].each do |error| %>
@@ -230,7 +234,7 @@
 
   <p>I, as a participant of NUSSU commIT CREATION 2020 (“the Event”), consent to National University of Singapore (NUS) through NUSSU commIT collecting, using and/or disclosing my personal data to third parties (including any third party located outside of Singapore) for the purpose of administering and managing the Event.</p>
 
-  <div class="form-group">
+  <div class="form-group custom-a">
     <div>
       <%= f.check_box :rules_and_regulations %>
       <%= f.label :rules_and_regulations, "I agree to abide to the above and the #{link_to 'Rules and Regulation', static_pages_rules_path} of Creation 2020.".html_safe, :class => "checkbox-inline" %>

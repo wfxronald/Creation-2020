@@ -1,37 +1,29 @@
 <style>
   * {
-      font-family: "Raleway";
+    font-family: "Raleway";
   }
 </style>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('a.active').removeClass('active');
-        $('a[href="' + location.pathname + '"]').addClass('active');
-    });
-</script>
-
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #FFCA0B;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
+          <li class="nav-item active">
             <%= link_to 'CREATION 2020', static_pages_home_path, id: "logo", class: 'nav-item nav-link' %>
           </li>
 
-          <li><%= link_to 'CHALLENGES', challenge_statements_path , class: 'nav-item nav-link' %></li>
+          <li><%= link_to 'Challenges', challenge_statements_path , class: 'nav-item nav-link' %></li>
 
           <% if user_signed_in? %>
-            <li><%= link_to 'SUBMISSIONS',  all_submissions_path  , class: 'nav-item nav-link' %></li>
+            <li><%= link_to 'Submissions',  all_submissions_path  , class: 'nav-item nav-link' %></li>
           <% end %>
 
           <li class="nav-item">
-            <%= link_to "RULES AND REGULATIONS", static_pages_rules_path, class: 'nav-link' %>
+            <%= link_to "Rules and Regulations", static_pages_rules_path, class: 'nav-link' %>
           </li>
 
           <li class="nav-item">
@@ -39,21 +31,21 @@
           </li>
 
           <li class="nav-item">
-            <%= link_to "CONTACT US", new_message_path, class: 'nav-link' %>
+            <%= link_to "Contact Us", new_message_path, class: 'nav-link' %>
           </li>
 
 
           <li class="navbar-right">
             <% if user_signed_in? %>
               <% if current_user.admin? %>
-                <li><%= link_to 'MAILING LIST', mailing_lists_path , class: 'nav-item nav-link' %></li>
-                <li><%= link_to 'ALL USERS', users_index_path , class: 'nav-item nav-link' %></li>
+                <li><%= link_to 'Mailing List', mailing_lists_path , class: 'nav-item nav-link' %></li>
+                <li><%= link_to 'All Users', users_index_path , class: 'nav-item nav-link' %></li>
               <% end %>
-                <li><%= link_to 'PROFILE', edit_user_registration_path, class: 'nav-item nav-link' %></li>
-                <li><%= link_to 'LOG OUT', destroy_user_session_path, method: :delete, class: 'nav-item nav-link' %></li>
+                <li><%= link_to 'Profile', edit_user_registration_path, class: 'nav-item nav-link' %></li>
+                <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-item nav-link' %></li>
             <% else %>
-              <li><%= link_to 'LOG IN', new_user_session_path, class: 'nav-item nav-link' %></li>
-              <li><%= link_to 'SIGN UP', new_user_registration_path, class: 'nav-item nav-link' %></li>
+              <li><%= link_to 'Log In', new_user_session_path, class: 'nav-item nav-link' %></li>
+              <li><%= link_to 'Sign Up', new_user_registration_path, class: 'nav-item nav-link' %></li>
             <% end %>
           </li>
         </ul>
