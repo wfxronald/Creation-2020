@@ -15,9 +15,11 @@ user = User.create!(name: "Example Admin",
              password: "password",
              password_confirmation: "password")
 
-challenge = user.challenge_statements.create!(title: "Challenge Statement 1", partner_name: "NUSSU Welfare", description: Faker::Lorem.paragraph(2))
+challenge = user.challenge_statements.create!(title: "Challenge Statement 1", partner_name: "NUSSU Welfare", description: "Description for CS1")
 challenge.zip.attach(io: File.open('app/assets/seed/ui-screenshot.jpg'), filename: 'ui-screenshot.jpg')
-challenge = user.challenge_statements.create!(title: "Challenge Statement 2", partner_name: "NUS IT", description: Faker::Lorem.paragraph(4))
+challenge = user.challenge_statements.create!(title: "Challenge Statement 2", partner_name: "NUS IT", description: "Description for CS2")
+challenge.zip.attach(io: File.open('app/assets/seed/ui-screenshot.jpg'), filename: 'ui-screenshot.jpg')
+challenge = user.challenge_statements.create!(title: "Challenge Statement 3", partner_name: "NUS DVO", description: "Description for CS3")
 challenge.zip.attach(io: File.open('app/assets/seed/ui-screenshot.jpg'), filename: 'ui-screenshot.jpg')
 
 User.create!(name: "Example Student",
