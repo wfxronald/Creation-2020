@@ -1,141 +1,251 @@
-<h2>Sign up</h2>
+<!DOCTYPE html>
+<html>
 
+<head>
+  <!-- Download the font for the page -->
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+
+  <!-- Responsive webpage -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Download Bootstrap and dependencies -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+
+<style>
+  .title {
+    padding-top: 3%;
+    text-align: center;
+    font-family: "Hey November";
+    font-size: 600%;
+  }
+  
+  .page-foot {
+    background-color: #F26648;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    text-align: center;
+  }
+
+  .last-link {
+    font-family: Raleway;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: white;
+    font-size: 200%;
+  }
+
+  .signup-button {
+    text-align: center;
+    padding-bottom: 3%;
+  }
+
+  .button {
+    font-family: "Raleway";
+    background-color: #111f36;
+    border: none;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 21px;
+    padding-right: 21px;
+  }
+
+  .centralize {
+    text-align: center;
+  }
+
+  .form-container {
+    max-width: 750px;
+    margin: auto;
+  }
+
+  form {
+    display: inline-block;
+  }
+
+  input[type=text], input[type=password], input[type=email], select {
+    width: 450px;
+    height: 30px;
+    border: 2px solid #111f36;
+    border-radius: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+</style>
+
+<body>
+<h1 class="title">USER SIGN UP</h1>
+
+<div class="centralize form-container">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%#= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field asterisk">
-    <%= f.label :name, "Full Name" %>
-  </div>
-  <div>
-    <%= f.text_field :name, class: 'form-control' %>
-    <% if resource.errors.any? && resource.errors.include?(:name) %>
-      <div class="invalid-feedback d-block">
-        <%  resource.errors.messages[:name].each do |error| %>
-          <% error.insert(0, "Name ") %>
-        <% end %>
-        <%=  resource.errors.messages[:name].join(", ") %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="field asterisk">
-    <%= f.label :nusnet, "NUSNET ID" %>
-  </div>
-  <div>
-    <%= f.text_field :nusnet, class: 'form-control' %>
-    <% if resource.errors.any? && resource.errors.include?(:nusnet) %>
-      <div class="invalid-feedback d-block">
-        <%  resource.errors.messages[:nusnet].each do |error| %>
-          <% error.insert(0, "NUSNET ID ") %>
-        <% end %>
-        <%=  resource.errors.messages[:nusnet].join(", ") %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :year, "Year" %>
-  </div>
-  <div>
-    <%= f.select :year, ['Year 1', 'Year 2', 'Year 3', 'Year 4' ] ,  :include_blank => true, class: 'form-control' %>
-    <% if resource.errors.any? && resource.errors.include?(:year) %>
-      <div class="invalid-feedback d-block">
-        <%  resource.errors.messages[:year].each do |error| %>
-          <% error.insert(0, "Year ") %>
-        <% end %>
-        <%=  resource.errors.messages[:year].join(", ") %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :faculty %>
-  </div>
-  <div>
-    <%= f.select :faculty, ['Faculty Of Arts & Social Sciences', 'School Of Business', 'School Of Computing', 'Faculty Of Dentistry',
-      'School Of Design & Environment', 'Faculty Of Engineering', 'Faculty Of Law', 'Yong Loo Lin School Of Medicine',
-                            'Faculty Of Science', 'Yong Siew Toh Conservatory Of Music'],  :include_blank => true %>
-    <% if resource.errors.any? && resource.errors.include?(:faculty) %>
-      <div class="invalid-feedback d-block">
-        <%  resource.errors.messages[:faculty].each do |error| %>
-          <% error.insert(0, "Faculty ") %>
-        <% end %>
-        <%=  resource.errors.messages[:faculty].join(", ") %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :contact_number, "Contact Number" %>
-  </div>
-  <div>
-    <%= f.text_field :contact_number %>
-    <% if resource.errors.any? && resource.errors.include?(:contact_number) %>
-      <div class="invalid-feedback d-block">
-        <%  resource.errors.messages[:contact_number].each do |error| %>
-          <% error.insert(0, "Contact Number ") %>
-        <% end %>
-        <%=  resource.errors.messages[:contact_number].join(", ") %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %>
-  </div>
-  <div>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    <% if resource.errors.any? && resource.errors.include?(:email) %>
-      <div class="invalid-feedback d-block">
-        <%  resource.errors.messages[:email].each do |error| %>
-          <% if error.casecmp("is invalid") %>
-            <% error.concat(", please use your NUS email.")  %>
+  <div class="form-group">
+    <div class="field asterisk">
+      <%= f.label :name, "Full Name" %>
+    </div>
+    <div>
+      <%= f.text_field :name, class: 'form-control' %>
+      <% if resource.errors.any? && resource.errors.include?(:name) %>
+        <div class="invalid-feedback d-block">
+          <%  resource.errors.messages[:name].each do |error| %>
+            <% error.insert(0, "Name ") %>
           <% end %>
-          <% error.insert(0, "Email ") %>
-        <% end %>
-        <%=  resource.errors.messages[:email].join(", ") %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <%=  resource.errors.messages[:name].join(", ") %>
+        </div>
       <% end %>
-  </div>
-  <div>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <div class="invalid-feedback d-block">
-      <%  resource.errors.messages[:password].each do |error| %>
-        <% error.insert(0, "Password ") %>
-      <% end %>
-      <%=  resource.errors.messages[:password].join(", ") %>
     </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %>
-  </div>
-  <div>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-<!--    <div class="invalid-feedback d-block">-->
-      <%#  resource.errors.messages[:password_confirmation].each do |error| %>
-        <%# error.insert(0, "Password confirmation") %>
-      <%# end %>
-      <%#=  resource.errors.messages[:password_confirmation].join(", ") %>
-<!--    </div>-->
+  <div class="form-group">
+    <div class="field asterisk">
+      <%= f.label :nusnet, "NUSNET ID" %>
+    </div>
+    <div>
+      <%= f.text_field :nusnet, class: 'form-control' %>
+      <% if resource.errors.any? && resource.errors.include?(:nusnet) %>
+        <div class="invalid-feedback d-block">
+          <%  resource.errors.messages[:nusnet].each do |error| %>
+            <% error.insert(0, "NUSNET ID ") %>
+          <% end %>
+          <%=  resource.errors.messages[:nusnet].join(", ") %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-  <div>
-    <%= f.check_box :rules_and_regulations %>
-    <%= f.label :rules_and_regulations, "I agree to abide to the #{link_to 'Rules and Regulation', static_pages_rules_path} of Creation 2020.".html_safe, :class => "checkbox-inline" %>
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :year, "Year"%>
+    </div>
+    <div>
+      <%= f.select :year, ['Year 1', 'Year 2', 'Year 3', 'Year 4' ] ,  :include_blank => true, class: 'form-control', placeholder: "Year" %>
+      <% if resource.errors.any? && resource.errors.include?(:year) %>
+        <div class="invalid-feedback d-block">
+          <%  resource.errors.messages[:year].each do |error| %>
+            <% error.insert(0, "Year ") %>
+          <% end %>
+          <%=  resource.errors.messages[:year].join(", ") %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :faculty %>
+    </div>
+    <div>
+      <%= f.select :faculty, ['Faculty Of Arts & Social Sciences', 'School Of Business', 'School Of Computing', 'Faculty Of Dentistry',
+        'School Of Design & Environment', 'Faculty Of Engineering', 'Faculty Of Law', 'Yong Loo Lin School Of Medicine',
+                              'Faculty Of Science', 'Yong Siew Toh Conservatory Of Music'],  :include_blank => true %>
+      <% if resource.errors.any? && resource.errors.include?(:faculty) %>
+        <div class="invalid-feedback d-block">
+          <%  resource.errors.messages[:faculty].each do |error| %>
+            <% error.insert(0, "Faculty ") %>
+          <% end %>
+          <%=  resource.errors.messages[:faculty].join(", ") %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :contact_number, "Contact Number" %>
+    </div>
+    <div>
+      <%= f.text_field :contact_number %>
+      <% if resource.errors.any? && resource.errors.include?(:contact_number) %>
+        <div class="invalid-feedback d-block">
+          <%  resource.errors.messages[:contact_number].each do |error| %>
+            <% error.insert(0, "Contact Number ") %>
+          <% end %>
+          <%=  resource.errors.messages[:contact_number].join(", ") %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :email %>
+    </div>
+    <div>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <% if resource.errors.any? && resource.errors.include?(:email) %>
+        <div class="invalid-feedback d-block">
+          <%  resource.errors.messages[:email].each do |error| %>
+            <% if error.casecmp("is invalid") %>
+              <% error.concat(", please use your NUS email.")  %>
+            <% end %>
+            <% error.insert(0, "Email ") %>
+          <% end %>
+          <%=  resource.errors.messages[:email].join(", ") %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+    </div>
+    <div>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+      <div class="invalid-feedback d-block">
+        <%  resource.errors.messages[:password].each do |error| %>
+          <% error.insert(0, "Password ") %>
+        <% end %>
+        <%=  resource.errors.messages[:password].join(", ") %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :password_confirmation %>
+    </div>
+    <div>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <!--    <div class="invalid-feedback d-block">-->
+        <%#  resource.errors.messages[:password_confirmation].each do |error| %>
+          <%# error.insert(0, "Password confirmation") %>
+        <%# end %>
+        <%#=  resource.errors.messages[:password_confirmation].join(", ") %>
+  <!--    </div>-->
+    </div>
+  </div>
+
+  <p>I, as a participant of NUSSU commIT CREATION 2020 (“the Event”), consent to National University of Singapore (NUS) through NUSSU commIT collecting, using and/or disclosing my personal data to third parties (including any third party located outside of Singapore) for the purpose of administering and managing the Event.</p>
+
+  <div class="form-group">
+    <div>
+      <%= f.check_box :rules_and_regulations %>
+      <%= f.label :rules_and_regulations, "I agree to abide to the above and the #{link_to 'Rules and Regulation', static_pages_rules_path} of Creation 2020.".html_safe, :class => "checkbox-inline" %>
+    </div>
   </div>
 
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="actions signup-button">
+    <%= f.submit "SIGN UP", class: "button" %>
   </div>
 <% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+<%= render "devise/shared/links" %><br><br><br><br>
+
+<div class="page-foot"><%= link_to "ANY QUESTIONS?", new_message_path, class: 'last-link' %></div>
+</body>
+</html>
