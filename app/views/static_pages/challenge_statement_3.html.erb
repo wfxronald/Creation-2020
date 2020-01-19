@@ -53,6 +53,11 @@
     padding-left: 21px;
     padding-right: 21px;
   }
+
+  .button:hover {
+    text-decoration: none;
+    color: white;
+  }
 </style>
 
 <body>
@@ -90,7 +95,7 @@
 
 <% if current_user == nil || !@challenge_statement.id.in?(current_user.joined_challenge_statement) %>
   <% if @challenge_statement.is_open %>
-    <%=  button_to "Join Challenge Statement", join_challenge_statement_path(@challenge_statement) %>
+    <%=  button_to "Join Challenge Statement", join_challenge_statement_path(@challenge_statement), class: "button" %>
   <% else %>
     <%= "Thank you for your interest in Creation 2020, currently we are no longer accepting submissions for this Challenge Statement!" %>
   <% end %>
@@ -99,9 +104,10 @@
 <div style="text-align: center;">
 <% if current_user != nil && @challenge_statement.id.in?(current_user.joined_challenge_statement) %>
   <% if @challenge_statement.is_open %>
-    <%= button_to "Download brief and template", rails_blob_path(@challenge_statement.zip, disposition: 'attachment'), class: "button" %>
+    <%= link_to "Download brief and template", rails_blob_path(@challenge_statement.zip, disposition: 'attachment'), :class => "button" %>
     <br/>
-    <%= button_to "Submit a submission", all_submissions_path, class: "button" %>
+    <br/>
+    <%= link_to "Submit a submission", all_submissions_path, :class => "button" %>
   <% else %>
     <%= "Thank you for your interest in Creation 2020, currently we are no longer accepting submissions for this Challenge Statement!" %>
   <% end %>
@@ -117,6 +123,7 @@
     <% end %>
   <% end %>
 <% end %>
+<br/>
 <br/>
 <%= link_to 'Back', challenge_statements_path %>
 </div>
