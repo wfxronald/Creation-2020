@@ -3,6 +3,24 @@
     font-weight: bold;
     font-size: 120%;
   }
+
+  .upload-button {
+    text-align: center;
+    padding-bottom: 3%;
+  }
+
+  .button {
+    font-family: "Raleway";
+    background-color: #111f36;
+    border: none;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 21px;
+    padding-right: 21px;
+  }
 </style>
 
 <%= form_with(model: @submission, url: [@challenge_statement, @submission], local: true) do |form| %>
@@ -27,8 +45,8 @@
 
   <%= form.hidden_field  :title, value: @challenge_statement.partner_name + "_" + current_user.name %>
 
-  <div class="actions form-group">
-    <%= form.submit %>
+  <div class="actions form-group upload-button">
+    <%= form.submit "UPLOAD", class:"button" %>
   </div>
 <% end %>
 
