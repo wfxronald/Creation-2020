@@ -1,12 +1,59 @@
+<style>
+  .submit-button {
+    text-align: center;
+    padding-bottom: 10%;
+  }
+
+  .button {
+    font-family: "Raleway";
+    background-color: #111f36;
+    border: none;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 21px;
+    padding-right: 21px;
+  }
+
+  .hide-label {
+    display: none;
+  }
+
+  .centralize {
+    text-align: center;
+  }
+
+  form {
+    display: inline-block;
+  }
+
+  input[type=text], textarea {
+    width: 450px;
+    border: 2px solid #111f36;
+    border-radius: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: "Raleway";
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+</style>
+
+<div class="container centralize">
+
 <%= form_with(model: @message, url: create_message_url, local: true) do |form| %>
 
-  <div>
+  <div class="form-group">
     <div class="field asterisk">
-      <%= form.label :name, 'Your Name' %>
+      <%= form.label :name, class: 'hide-label' %>
+      <%= image_tag("logo-username.png", height: "40px") %>
     </div>
 
     <div>
-      <%= form.text_field :name, class: 'form-control' %>
+      <%= form.text_field :name, class: 'form-control', placeholder: 'Name' %>
       <% if @message.errors.any? && @message.errors.include?(:name) %>
         <div class="invalid-feedback d-block">
           <%  @message.errors.messages[:name].each do |error| %>
@@ -18,13 +65,14 @@
     </div>
   </div>
 
-  <div>
+  <div class="form-group">
     <div class="field asterisk">
-      <%= form.label :user_email, 'Email Address' %>
+      <%= form.label :user_email, class: 'hide-label' %>
+      <%= image_tag("logo-email.png", height: "40px") %>
     </div>
 
     <div>
-      <%= form.text_field :user_email, class: 'form-control' %>
+      <%= form.text_field :user_email, class: 'form-control', placeholder: 'Email' %>
       <% if @message.errors.any? && @message.errors.include?(:user_email) %>
         <div class="invalid-feedback d-block">
           <%=  @message.errors.messages[:user_email].join(", ") %>
@@ -33,24 +81,28 @@
     </div>
   </div>
 
-  <div class="field asterisk">
-    <%= form.label :body, 'Message' %>
+  <div class="form-group">
+    <div class="field asterisk">
+      <%= form.label :body, class: 'hide-label' %>
+      <%= image_tag("logo-question-mark.png", height: "40px") %>
+    </div>
+
+    <div>
+      <%= form.text_area :body, class: 'form-control', placeholder: 'Type your inquiry here' %>
+      <% if @message.errors.any? && @message.errors.include?(:body) %>
+        <div class="invalid-feedback d-block">
+          <%  @message.errors.messages[:body].each do |error| %>
+            <% error.insert(0, "Message ") %>
+          <% end %>
+          <%=  @message.errors.messages[:body].join(", ") %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-  <div>
-    <%= form.text_area :body, class: 'form-control' %>
-    <% if @message.errors.any? && @message.errors.include?(:body) %>
-      <div class="invalid-feedback d-block">
-        <%  @message.errors.messages[:body].each do |error| %>
-          <% error.insert(0, "Message ") %>
-        <% end %>
-        <%=  @message.errors.messages[:body].join(", ") %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="actions pt-3">
-    <%= form.submit "Submit" %>
+  <div class="actions pt-3 submit-button">
+    <%= form.submit "SUBMIT", class: 'button' %>
   </div>
 
 <% end %>
+</div>
