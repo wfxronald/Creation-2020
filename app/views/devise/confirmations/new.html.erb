@@ -89,10 +89,17 @@
 
 	<div class="centralize form-container">
 		<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-		  <%= render "devise/shared/error_messages", resource: resource %>
 
 		  <div class="field form-group">
 		    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
+        <% if resource.errors.any? && resource.errors.include?(:email) %>
+          <div class="invalid-feedback d-block">
+            <%  resource.errors.messages[:email].each do |error| %>
+              <% error.insert(0, "Email ") %>
+            <% end %>
+            <%=  resource.errors.messages[:email].join(", ") %>
+          </div>
+        <% end %>
 		  </div>
 
 		  <div class="actions send-reset-button">

@@ -9,9 +9,8 @@ user = User.create!(name: "Example Admin",
                     nusnet: "E0000000",
              faculty: "School Of Computing",
              year: "Year 1",
-             admin: true, email: "e0319186@u.nus.edu",
-
-             #email: "e0324758@u.nus.edu",
+             admin: true,
+             email: "e0324758@u.nus.edu",
              password: "password",
              password_confirmation: "password")
 
@@ -26,7 +25,7 @@ User.create!(name: "Example Student",
              nusnet: "E0319186",
              faculty: "School Of Business",
              year: "Year 4",
-             email: "e0324758@u.nus.edu",
+             email: "e0319186@u.nus.edu",
              password: "password",
              password_confirmation: "password")
 
