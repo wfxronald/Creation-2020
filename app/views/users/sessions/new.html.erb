@@ -70,6 +70,7 @@
   }
 
   input[type=email], input[type=password] {
+    max-width: 85vw;
     width: 450px;
     border: 2px solid #111f36;
     border-radius: 0px;
@@ -128,6 +129,6 @@
 
 <%= render "devise/shared/links" %><br><br><br><br>
 
-<div class="page-foot"><%= link_to "ANY QUESTIONS?", new_message_path, class: 'last-link' %></div>
+<div class="page-foot" style="position: fixed; bottom: 0; width: 100%;"><%= link_to "ANY QUESTIONS?", new_message_path, class: 'last-link' %></div>
 </body>
 </html>

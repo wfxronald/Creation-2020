@@ -12,25 +12,29 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item <%= 'active' if current_page?(static_pages_home_path) %>">
             <%= link_to 'CREATION 2020', static_pages_home_path, id: "logo", class: 'nav-item nav-link' %>
           </li>
 
-          <li><%= link_to 'Challenges', challenge_statements_path , class: 'nav-item nav-link' %></li>
+          <li class="nav-item <%= 'active' if current_page?(challenge_statements_path) %>">
+            <%= link_to 'Challenges', challenge_statements_path , class: 'nav-item nav-link' %>
+          </li>
 
           <% if user_signed_in? %>
-            <li><%= link_to 'Submissions',  all_submissions_path  , class: 'nav-item nav-link' %></li>
+            <li class="nav-item <%= 'active' if current_page?('/submit') %>">
+              <%= link_to 'Submissions',  all_submissions_path  , class: 'nav-item nav-link' %>
+            </li>
           <% end %>
 
-          <li class="nav-item">
+          <li class="nav-item <%= 'active' if current_page?(static_pages_rules_path) %>">
             <%= link_to "Rules and Regulations", static_pages_rules_path, class: 'nav-link' %>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item <%= 'active' if current_page?(static_pages_faq_path) %>">
             <%= link_to "FAQ", static_pages_faq_path, class: 'nav-link' %>
           </li>
 
-          <li class="nav-item">
+          <li class="nav-item <%= 'active' if current_page?('/contact-us') %>">
             <%= link_to "Contact Us", new_message_path, class: 'nav-link' %>
           </li>
 
@@ -41,11 +45,17 @@
                 <li><%= link_to 'Mailing List', mailing_lists_path , class: 'nav-item nav-link' %></li>
                 <li><%= link_to 'All Users', users_index_path , class: 'nav-item nav-link' %></li>
               <% end %>
-                <li><%= link_to 'Profile', edit_user_registration_path, class: 'nav-item nav-link' %></li>
+                <li class="nav-item <%= 'active' if current_page?(edit_user_registration_path) %>">
+                  <%= link_to 'Profile', edit_user_registration_path, class: 'nav-item nav-link' %>
+                </li>
                 <li><%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'nav-item nav-link' %></li>
             <% else %>
-              <li><%= link_to 'Log In', new_user_session_path, class: 'nav-item nav-link' %></li>
-              <li><%= link_to 'Sign Up', new_user_registration_path, class: 'nav-item nav-link' %></li>
+              <li class="nav-item <%= 'active' if current_page?('/users/sign_in') %>">
+                <%= link_to 'Log In', new_user_session_path, class: 'nav-item nav-link' %>
+              </li>
+              <li class="nav-item <%= 'active' if current_page?('/users/sign_up') %>">
+                <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-item nav-link' %>
+              </li>
             <% end %>
           </li>
         </ul>
