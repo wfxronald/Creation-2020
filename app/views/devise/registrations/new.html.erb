@@ -71,6 +71,7 @@
   }
 
   input[type=text], input[type=password], input[type=email], select {
+    max-width: 85vw;
     width: 450px;
     height: 30px;
     border: 2px solid #111f36;
@@ -97,7 +98,7 @@
       <%= f.label :name, "Full Name" %>
     </div>
     <div>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, autofocus: true %>
       <% if resource.errors.any? && resource.errors.include?(:name) %>
         <div class="invalid-feedback d-block">
           <%  resource.errors.messages[:name].each do |error| %>
@@ -131,7 +132,7 @@
       <%= f.label :year, "Year"%>
     </div>
     <div>
-      <%= f.select :year, ['Year 1', 'Year 2', 'Year 3', 'Year 4' ] ,  :include_blank => true, class: 'form-control', placeholder: "Year" %>
+      <%= f.select :year, ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Others'] ,  :include_blank => true, class: 'form-control', placeholder: "Year" %>
       <% if resource.errors.any? && resource.errors.include?(:year) %>
         <div class="invalid-feedback d-block">
           <%  resource.errors.messages[:year].each do |error| %>
@@ -150,7 +151,7 @@
     <div>
       <%= f.select :faculty, ['Faculty Of Arts & Social Sciences', 'School Of Business', 'School Of Computing', 'Faculty Of Dentistry',
         'School Of Design & Environment', 'Faculty Of Engineering', 'Faculty Of Law', 'Yong Loo Lin School Of Medicine',
-                              'Faculty Of Science', 'Yong Siew Toh Conservatory Of Music'],  :include_blank => true %>
+                              'Faculty Of Science', 'Yong Siew Toh Conservatory Of Music', 'Others'],  :include_blank => true %>
       <% if resource.errors.any? && resource.errors.include?(:faculty) %>
         <div class="invalid-feedback d-block">
           <%  resource.errors.messages[:faculty].each do |error| %>
@@ -184,7 +185,7 @@
       <%= f.label :email %>
     </div>
     <div>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, autocomplete: "email" %>
       <% if resource.errors.any? && resource.errors.include?(:email) %>
         <div class="invalid-feedback d-block">
           <%  resource.errors.messages[:email].each do |error| %>
