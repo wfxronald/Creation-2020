@@ -84,6 +84,24 @@
   .custom-a a{
     text-decoration: underline;
   }
+
+  .upload-button {
+    text-align: center;
+    padding-bottom: 3%;
+  }
+
+  .button {
+    font-family: "Raleway";
+    background-color: #111f36;
+    border: none;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 21px;
+    padding-right: 21px;
+  }
 </style>
 
 <body>
@@ -143,10 +161,10 @@
     </div>
 
 
-    <div class="actions">
-      <%= f.submit "Update" %>
+    <div class="actions upload-button">
+      <%= f.submit "UPDATE", class:"button" %>
     </div>
   <% end %>
-</div>
 
-<%= link_to "Back", :back %>
+  <br><br><%= link_to "Back", :back %>
+</div>
