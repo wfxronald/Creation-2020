@@ -165,23 +165,6 @@
 
   <div class="form-group">
     <div class="field">
-      <%= f.label :contact_number, "Contact Number" %>
-    </div>
-    <div>
-      <%= f.text_field :contact_number %>
-      <% if resource.errors.any? && resource.errors.include?(:contact_number) %>
-        <div class="invalid-feedback d-block">
-          <%  resource.errors.messages[:contact_number].each do |error| %>
-            <% error.insert(0, "Contact Number ") %>
-          <% end %>
-          <%=  resource.errors.messages[:contact_number].join(", ") %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="field">
       <%= f.label :email %>
     </div>
     <div>
@@ -238,7 +221,7 @@
   <div class="form-group">
     <div>
       <%= f.check_box :rules_and_regulations %>
-      <%= f.label :rules_and_regulations, "I agree to abide to the above and the #{link_to 'Rules and Regulation', static_pages_rules_path, class: "custom-a"} of Creation 2020.".html_safe, :class => "checkbox-inline" %>
+      <%= f.label :rules_and_regulations, "I agree to abide to the above and the #{link_to 'Rules and Regulations', static_pages_rules_path, class: "custom-a"} of Creation 2020.".html_safe, :class => "checkbox-inline" %>
     </div>
   </div>
 
