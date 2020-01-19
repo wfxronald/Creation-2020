@@ -1,5 +1,29 @@
-<h1>New Submission</h1>
+<head>
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+</head>
 
+<style>
+  .title {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    text-align: center;
+    font-family: "Hey November";
+    font-size: 600%;
+  }
+
+  .centralize {
+  	text-align: center;
+  }
+
+  * {
+  	font-family: "Raleway";
+  }
+</style>
+
+<h1 class="title">NEW SUBMISSION</h1>
+
+<div class="container centralize">
 <%= render 'form', submission: @submission %>
 
 <%= link_to 'Back', all_submissions_path %>
+</div>

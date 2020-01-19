@@ -9,7 +9,6 @@
     <th>NUSNET Id</th>
     <th>Faculty</th>
     <th>Year</th>
-    <th>Contact Number</th>
     <th>Email</th>
     <% @challenge_statements.each do |challenge_statement| %>
       <th><%=  "Challenge Statement " + challenge_statement.id.to_s %> </th>
@@ -26,7 +25,6 @@
       <td><%= user.nusnet %></td>
       <td><%= user.faculty %></td>
       <td><%= user.year %></td>
-      <td><%= user.contact_number %></td>
       <td><%= user.email %></td>
       <% @challenge_statements.each do |challenge_statement| %>
         <% if user.has_joined_challenge?(challenge_statement.id) && @submissions.where(:challenge_statement_id => challenge_statement.id).exists? %>
