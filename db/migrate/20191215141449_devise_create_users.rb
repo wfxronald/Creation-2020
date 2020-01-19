@@ -8,7 +8,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :nusnet
       t.string :faculty
       t.string :year
-      t.integer :contact_number
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
