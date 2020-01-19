@@ -35,27 +35,38 @@
     font-family: "Raleway";
     font-weight: bold;
     letter-spacing: 2px;
+    margin-left: 7%;
+  }
+
+  img {
+    position: absolute;
+  }
+
+  .custom-form {
+    text-align: left;
   }
 </style>
 
 <div class="container centralize">
 <%= form_with(model: @mailing_list, local: true) do |form| %>
 
-  <div class="field asterisk">
-    <%= form.label :email, class: 'hide-label' %>
-    <%= image_tag("logo-email.png", height: "40px") %>
-  </div>
+  <div class="custom-form">
+    <div class="field asterisk">
+      <%= form.label :email, class: 'hide-label' %>
+      <%= image_tag("logo-email.png", height: "40px") %>
+    </div>
 
-  <div>
-    <%= form.text_field :email, class: 'form-control', placeholder: "Email" %>
-    <% if @mailing_list.errors.any? && @mailing_list.errors.include?(:email) %>
-      <div class="invalid-feedback d-block">
-        <%  @mailing_list.errors.messages[:email].each do |error| %>
-          <% error.insert(0, "Email ") %>
-        <% end %>
-        <%=  @mailing_list.errors.messages[:email].join(", ") %>
-      </div>
-    <% end %>
+    <div>
+      <%= form.text_field :email, class: 'form-control', placeholder: "Email" %>
+      <% if @mailing_list.errors.any? && @mailing_list.errors.include?(:email) %>
+        <div class="invalid-feedback d-block">
+          <%  @mailing_list.errors.messages[:email].each do |error| %>
+            <% error.insert(0, "Email ") %>
+          <% end %>
+          <%=  @mailing_list.errors.messages[:email].join(", ") %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div class="actions pt-3 submit-button">

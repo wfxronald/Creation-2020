@@ -9,9 +9,14 @@
   a {
   	color: #111f36;
   }
+
+  .custom-a {
+    text-decoration: underline;
+  }
+
 </style>
 
-<div class="container centralize">
+<div class="container centralize custom-a">
 <%- if controller_name != 'sessions' %>
   <%= link_to "Log in", new_session_path(resource_name) %><br />
 <% end %>
