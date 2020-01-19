@@ -41,7 +41,7 @@
   .title {
     text-align: right;
     font-family: "Hey November";
-    font-size: 600%;
+    font-size: 20vmin;
   }
 
   .subtitle {
@@ -64,7 +64,7 @@
     font-family: "Raleway Black";
     font-size: 200%;
     font-weight: 100;
-    color: white;
+    color: black;
     letter-spacing: 4px;
     padding-left: 5%;
     padding-right: 30%;
@@ -84,7 +84,7 @@
     padding-left: 5%;
     padding-right: 30%;
     text-align: justify;
-    color: white;
+    color: black;
   }
 
   .padded-below {
@@ -175,8 +175,8 @@
 
 <div class="title-box-container">
     <div class="title-box">
-        <h1 class="title">CHALLENGE STATEMENTS</h1>
-        <h2 class="subtitle">DARE TO INSPIRE</h2>
+        <h1 class="title" style="text-align: center;">CHALLENGE STATEMENTS</h1>
+        <h2 class="subtitle" style="margin-right: 5px;">DARE TO INSPIRE</h2>
     </div>
 </div>
 
@@ -232,7 +232,6 @@
     <div class="first-desc padded-below-orange">
     <p>NUS Information Technology is the cornerstone for provision of reliable, high performance and secure IT infrastructure and effective IT governance and services for the campus.</p>
 
-    <%= button_to 'More Details', static_pages_challenge_statement_3_path(@challenge_statements.find(3)), :method => :get %>
     </div>
 </div>
 
