@@ -8,7 +8,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :rules_and_regulations, acceptance: true
   validates :name, :faculty, :year, presence: true
-  validates :contact_number, numericality: { only_integer: true }
   validates :nusnet, length: {is: 8}, format: { with: /\A[E|e][+-]?\d+\z/, message: "must start with E followed by numbers." }, uniqueness: { case_sensitive: false }
   def is_admin?
     admin
