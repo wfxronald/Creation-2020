@@ -52,6 +52,7 @@
     padding-bottom: 7px;
     padding-left: 21px;
     padding-right: 21px;
+    text-transform: uppercase;
   }
 
   .button:hover {
@@ -74,6 +75,7 @@
     <br/>
     The target audience of mascot are students and staff of NUS. 
     <br/>
+    <br/>
   </p>
   <h2 class="cs3-heading">Prizes</h2>
   <p>First prize:</p>
@@ -93,6 +95,8 @@
     <li>12-months Adobe Creative Cloud for Individual Complete All Apps membership</li>
   </ul>
 
+  <br/><br/>
+
 <% if current_user == nil || !@challenge_statement.id.in?(current_user.joined_challenge_statement) %>
   <% if @challenge_statement.is_open %>
     <%=  button_to "Join Challenge Statement", join_challenge_statement_path(@challenge_statement), class: "button" %>
@@ -107,7 +111,7 @@
     <%= link_to "Download brief and template", rails_blob_path(@challenge_statement.zip, disposition: 'attachment'), :class => "button" %>
     <br/>
     <br/>
-    <%= link_to "Submit a submission", all_submissions_path, :class => "button" %>
+    <%= link_to "Make a submission", all_submissions_path, :class => "button" %>
   <% else %>
     <%= "Thank you for your interest in Creation 2020, currently we are no longer accepting submissions for this Challenge Statement!" %>
   <% end %>

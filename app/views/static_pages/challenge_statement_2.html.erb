@@ -52,6 +52,7 @@
     padding-bottom: 7px;
     padding-left: 21px;
     padding-right: 21px;
+    text-transform: uppercase;
   }
 
   .button:hover {
@@ -76,7 +77,7 @@
     <br/>
     <br/>
     Commencement Class Giving is an annual tradition in which the graduating cohort of NUS comes together to celebrate convocation by making a single gift ($20.21 for Class of 2021) in support of their juniors. By leaving a legacy through their giving, the cohort contributes to current and future students in financial need, as well as activities that will enrich campus life. 
-    <br/>
+    <br/><br/>
   </p>
   <h2 class="cs2-heading">Prizes</h2>
   <p>First prize:</p>
@@ -96,6 +97,8 @@
     <li>12-months Adobe Creative Cloud for Individual Complete All Apps membership</li>
   </ul>
 
+  <br/><br/>
+
 <% if current_user == nil || !@challenge_statement.id.in?(current_user.joined_challenge_statement) %>
   <% if @challenge_statement.is_open %>
     <%=  button_to "Join Challenge Statement", join_challenge_statement_path(@challenge_statement), class: "button" %>
@@ -107,10 +110,10 @@
 <div style="text-align: center;">
 <% if current_user != nil && @challenge_statement.id.in?(current_user.joined_challenge_statement) %>
   <% if @challenge_statement.is_open %>
-    <%= link_to "Download brief and template", rails_blob_path(@challenge_statement.zip, disposition: 'attachment'), :class => "button" %>
+    <%= link_to "DOWNLOAD BRIEF AND TEMPLATE", rails_blob_path(@challenge_statement.zip, disposition: 'attachment'), :class => "button" %>
     <br/>
     <br/>
-    <%= link_to "Submit a submission", all_submissions_path, :class => "button" %>
+    <%= link_to "Make a submission", all_submissions_path, :class => "button" %>
   <% else %>
     <%= "Thank you for your interest in Creation 2020, currently we are no longer accepting submissions for this Challenge Statement!" %>
   <% end %>

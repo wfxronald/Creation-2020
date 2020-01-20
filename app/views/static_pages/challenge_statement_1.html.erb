@@ -52,6 +52,7 @@
     padding-bottom: 7px;
     padding-left: 21px;
     padding-right: 21px;
+    text-transform: uppercase;
   }
 
   .button:hover {
@@ -106,6 +107,8 @@
     <li>12-months Adobe Creative Cloud for Individual Complete All Apps membership</li>
   </ul>
 
+  <br/><br/>
+
 <% if current_user == nil || !@challenge_statement.id.in?(current_user.joined_challenge_statement) %>
   <% if @challenge_statement.is_open %>
     <%=  button_to "Join Challenge Statement", join_challenge_statement_path(@challenge_statement), class: "button" %>
@@ -117,10 +120,10 @@
 <div style="text-align: center;">
 <% if current_user != nil && @challenge_statement.id.in?(current_user.joined_challenge_statement) %>
   <% if @challenge_statement.is_open %>
-    <%= link_to "Download brief and template", rails_blob_path(@challenge_statement.zip, disposition: 'attachment'), :class => "button" %>
+    <%= link_to "DOWNLOAD BRIEF AND TEMPLATE", rails_blob_path(@challenge_statement.zip, disposition: 'attachment'), :class => "button" %>
     <br/>
     <br/>
-    <%= link_to "Submit a submission", all_submissions_path, :class => "button" %>
+    <%= link_to "Make a submission", all_submissions_path, :class => "button" %>
   <% else %>
     <%= "Thank you for your interest in Creation 2020, currently we are no longer accepting submissions for this Challenge Statement!" %>
   <% end %>
