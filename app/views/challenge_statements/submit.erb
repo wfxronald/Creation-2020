@@ -69,6 +69,7 @@
     <% @submissions = @challenge_statement.submissions.where(:user_id => current_user.id) %>
   <% end %>
   <%= render "submissions/homepage" %>
+  <br/>
 <% end %>
 <br><br><br>
 </div>
