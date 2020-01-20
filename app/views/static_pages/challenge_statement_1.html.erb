@@ -52,15 +52,32 @@
     padding-bottom: 7px;
     padding-left: 21px;
     padding-right: 21px;
+    text-transform: uppercase;
   }
 
   .button:hover {
     text-decoration: none;
     color: white;
   }
+
+  .page-foot {
+    background-color: #F26648;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    text-align: center;
+  }
+
+  .last-link {
+    font-family: Raleway;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: white;
+    font-size: 200%;
+  }
 </style>
 
 <body>
+<div class="container">
 <h1 class="title">2020 NUSSU Welfare Diary</h1>
 <div class="cs1-container">
   <p>Design for the AY2020/21 Welfare Diary. The theme of the journal is jewel toned colours with writings in block letters style. The design of the journal should appeal to the NUS student community. </p>
@@ -90,56 +107,64 @@
     <br/>
   </p>
   <h2 class="cs1-heading">Prizes</h2>
-  <p>First prize:</p>
-  <ul>
-    <li>Nintendo Switch and</li>
-    <li>12-months Adobe Creative Cloud for Individual Complete All Apps membership</li>
-  </ul>
-  <p>Second prize:</p>
-  <ul>
-    <li>Capitaland Voucher and</li>
-    <li>12-months Adobe Creative Cloud for Individual Complete All Apps membership</li>
-  </ul>
-  <p>Third prize:</p>
-  <ul>
-    <li>Capitaland Voucher and</li>
-    <li>12-months Adobe Creative Cloud for Individual Complete All Apps membership</li>
-  </ul>
+  <div class="cs1-padding">
+    <p>First prize:</p>
+    <ul>
+      <li>Nintendo Switch and</li>
+      <li>12-months Adobe Creative Cloud for Individual Complete All Apps membership</li>
+    </ul>
+    <p>Second prize:</p>
+    <ul>
+      <li>Capitaland Voucher and</li>
+      <li>12-months Adobe Creative Cloud for Individual Complete All Apps membership</li>
+    </ul>
+    <p>Third prize:</p>
+    <ul>
+      <li>Capitaland Voucher and</li>
+      <li>12-months Adobe Creative Cloud for Individual Complete All Apps membership</li>
+    </ul>
+  </div>
 
-<% if current_user == nil || !@challenge_statement.id.in?(current_user.joined_challenge_statement) %>
-  <% if @challenge_statement.is_open %>
-    <%=  button_to "Join Challenge Statement", join_challenge_statement_path(@challenge_statement), class: "button" %>
-  <% else %>
-    <%= "Thank you for your interest in Creation 2020, currently we are no longer accepting submissions for this Challenge Statement!" %>
-  <% end %>
-<%  end %>
+  <br/><br/>
 
 <div style="text-align: center;">
-<% if current_user != nil && @challenge_statement.id.in?(current_user.joined_challenge_statement) %>
-  <% if @challenge_statement.is_open %>
-    <%= link_to "Download brief and template", rails_blob_path(@challenge_statement.zip, disposition: 'attachment'), :class => "button" %>
-    <br/>
-    <br/>
-    <%= link_to "Submit a submission", all_submissions_path, :class => "button" %>
-  <% else %>
-    <%= "Thank you for your interest in Creation 2020, currently we are no longer accepting submissions for this Challenge Statement!" %>
-  <% end %>
-<% end %>
-
-<% if user_signed_in? %>
-  <% if current_user.admin %>
-    <%= button_to 'Edit', edit_challenge_statement_path(@challenge_statement), :method => :get %>
+  <% if current_user == nil || !@challenge_statement.id.in?(current_user.joined_challenge_statement) %>
     <% if @challenge_statement.is_open %>
-      <%= button_to 'Close Challenge Statement', close_challenge_statement_path(@challenge_statement), data: { confirm: 'Are you sure?' }%>
+      <%=  button_to "Join Challenge Statement", join_challenge_statement_path(@challenge_statement), class: "button" %>
     <% else %>
-      <%= button_to 'Open Challenge Statement', close_challenge_statement_path(@challenge_statement),  data: { confirm: 'Are you sure?' }%>
+      <%= "Thank you for your interest in Creation 2020, currently we are no longer accepting submissions for this Challenge Statement!" %>
+    <% end %>
+  <%  end %>
+
+  <% if current_user != nil && @challenge_statement.id.in?(current_user.joined_challenge_statement) %>
+    <% if @challenge_statement.is_open %>
+      <%= link_to "Download brief and template", rails_blob_path(@challenge_statement.zip, disposition: 'attachment'), :class => "button" %>
+      <br/>
+      <br/>
+      <%= link_to "Make a submission", all_submissions_path, :class => "button" %>
+    <% else %>
+      <%= "Thank you for your interest in Creation 2020, currently we are no longer accepting submissions for this Challenge Statement!" %>
     <% end %>
   <% end %>
-<% end %>
-<br/>
-<br/>
-<%= link_to 'Back', challenge_statements_path %>
+
+  <% if user_signed_in? %>
+    <% if current_user.admin %>
+      <%= button_to 'Edit', edit_challenge_statement_path(@challenge_statement), :method => :get %>
+      <% if @challenge_statement.is_open %>
+        <%= button_to 'Close Challenge Statement', close_challenge_statement_path(@challenge_statement), data: { confirm: 'Are you sure?' }%>
+      <% else %>
+        <%= button_to 'Open Challenge Statement', close_challenge_statement_path(@challenge_statement),  data: { confirm: 'Are you sure?' }%>
+      <% end %>
+    <% end %>
+  <% end %>
+  <br/>
+  <br/>
+  <%= link_to 'Back', challenge_statements_path %>
+  </div>
 </div>
 </div>
+
+<div class="page-foot"><%= link_to "ANY QUESTIONS?", new_message_path, class: 'last-link' %></div>
+
 </body>
 </html>

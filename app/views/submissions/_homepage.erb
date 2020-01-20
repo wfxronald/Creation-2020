@@ -26,13 +26,17 @@
   <tbody>
   <% @submissions.each do |submission| %>
     <tr>
-      <td> <%= link_to submission.file.filename, rails_blob_path(submission.file, disposition: 'attachment') %> &nbsp; &nbsp; &nbsp;</td> 
+      <td> <%= link_to submission.file.filename, rails_blob_path(submission.file, disposition: 'attachment') %> </td> 
+    </tr>
+    <tr>
       <% if current_user.admin %>
          <td><%= submission.user.email %></td>
       <% end %>
+    </tr>
+    <tr>
       <% if !current_user.admin %>
         <% if @challenge_statement.is_open %>
-          <td><%= button_to 'REUPLOAD SUBMISSION',  edit_challenge_statement_submission_path(@challenge_statement, submission) , :method => :get, class:"button" %></td>
+          <td><br/><%= button_to 'REUPLOAD SUBMISSION',  edit_challenge_statement_submission_path(@challenge_statement, submission) , :method => :get, class:"button" %></td>
         <% end %>
       <% end %>
     </tr>
