@@ -78,8 +78,11 @@
     <% @submissions = @challenge_statement.submissions.where(:user_id => current_user.id) %>
   <% end %>
   <%= render "submissions/homepage" %>
+  <br/>
 <% end %>
+<br><br><br>
 </div>
+
 <br/><br/><br/>
 <div class="page-foot"><%= link_to "ANY QUESTIONS?", new_message_path, class: 'last-link' %></div>
 </body>

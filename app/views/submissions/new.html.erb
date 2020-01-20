@@ -27,6 +27,21 @@
   * {
   	font-family: "Raleway";
   }
+
+  .page-foot {
+    background-color: #F26648;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    text-align: center;
+  }
+
+  .last-link {
+    font-family: Raleway;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: white;
+    font-size: 200%;
+  }
 </style>
 
 <h1 class="title">NEW SUBMISSION</h1>
@@ -34,5 +49,7 @@
 <div class="container centralize">
 <%= render 'form', submission: @submission %>
 
-<%= link_to 'Back', all_submissions_path %>
+<%= link_to 'Back', all_submissions_path %><br/><br/><br/><br/><br/><br/>
 </div>
+
+<div class="page-foot"><%= link_to "ANY QUESTIONS?", new_message_path, class: 'last-link' %></div>

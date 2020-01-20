@@ -28,9 +28,10 @@
 <style>
   .title {
     padding-top: 3%;
+    padding-bottom: 3%;
     text-align: center;
     font-family: "Hey November";
-    font-size: 600%;
+    font-size: 20vmin;
   }
 
   .page-foot {
@@ -117,6 +118,21 @@
     font-size: 100%;
     letter-spacing: 2px;
   }
+
+  .page-foot {
+    background-color: #F26648;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    text-align: center;
+  }
+
+  .last-link {
+    font-family: Raleway;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: white;
+    font-size: 200%;
+  }
 </style>
 
 <body>
@@ -187,9 +203,12 @@
   <% end %>
 </div>
 
+<br/><br/>
+
 <%= render "devise/shared/links" %>
   <div class="page-foot" style="position: fixed; bottom: 0; width: 100%;">
     <%= link_to "ANY QUESTIONS?", new_message_path, class: 'last-link' %>
   </div>
 </body>
 </html>
+
