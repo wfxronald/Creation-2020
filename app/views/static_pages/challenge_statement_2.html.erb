@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Download the font for the page -->
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway" />
+
+  <!-- Responsive webpage -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Download Bootstrap and dependencies -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+
+<style>
+  .title {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    text-align: center;
+    font-family: "Hey November";
+    font-size: 20vmin;
+  }
+
+  .cs2-container {
+    margin: auto;
+    max-width: 750px;
+    padding-bottom: 3%;
+  }
+
+  .cs2-heading {
+    font-family: "Raleway Black";
+    text-align: center;
+  }
+
+  p {
+    font-family: "Raleway Semibold";
+    text-align: justify;
+  }
+
+  .button {
+    font-family: "Raleway";
+    background-color: #111f36;
+    border: none;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 21px;
+    padding-right: 21px;
+  }
+
+  .button:hover {
+    text-decoration: none;
+    color: white;
+  }
+</style>
+
+<body>
+<h1 class="title">Key Visual for NUS Commencement Class Giving 2021</h1>
+<div class="cs2-container">
+  <p>Create a new, refreshed key visual for NUS Commencement Class Giving 2021. The design should inspire pride in being affiliated with NUS and encourage students to mark their graduation with a gift in support of their juniors. </p>
+  <h2 class="cs2-heading">Context</h2>
+  <p>
+    A key visual is not a logo design, but an effective add-on to the logo. It refers to an image motif used in campaigns in order to enhance brand recognition. The context of a campaign should be easily and quickly grasped from the key visual. 
+    <br/>
+    <br/>
+    The key visual should encapsulate a strong concept that is different from recent years and carry distinct elements that can be replicated in different formats. There is no need to use NUS colours or education and giving-related symbols/icons/motifs (e.g. heart, hands, gift box, plant, book, mortarboard, scroll, etc.). 
+    <br/>
+    <br/>
+    Keep in mind that the Commencement Class Giving key visual will be adapted to suit different messaging and dimensions (e.g. web banners, emailers, lamp post banners, floor stickers, etc).  
+    <br/>
+    <br/>
+    Commencement Class Giving is an annual tradition in which the graduating cohort of NUS comes together to celebrate convocation by making a single gift ($20.21 for Class of 2021) in support of their juniors. By leaving a legacy through their giving, the cohort contributes to current and future students in financial need, as well as activities that will enrich campus life. 
+    <br/>
+  </p>
+  <h2 class="cs2-heading">Prizes</h2>
+  <p>First prize:</p>
+  <ul>
+    <li>Apple iPad (32GB) and</li>
+    <li>Apple Pencil (1st Generation) and</li>
+    <li>12-months Adobe Creative Cloud for Individual Complete All Apps membership</li>
+  </ul>
+  <p>Second prize:</p>
+  <ul>
+    <li>Capitaland Voucher and</li>
+    <li>12-months Adobe Creative Cloud for Individual Complete All Apps membership</li>
+  </ul>
+  <p>Third prize:</p>
+  <ul>
+    <li>Capitaland Voucher and</li>
+    <li>12-months Adobe Creative Cloud for Individual Complete All Apps membership</li>
+  </ul>
+
+<% if current_user == nil || !@challenge_statement.id.in?(current_user.joined_challenge_statement) %>
+  <% if @challenge_statement.is_open %>
+    <%=  button_to "Join Challenge Statement", join_challenge_statement_path(@challenge_statement), class: "button" %>
+  <% else %>
+    <%= "Thank you for your interest in Creation 2020, currently we are no longer accepting submissions for this Challenge Statement!" %>
+  <% end %>
+<%  end %>
+
+<div style="text-align: center;">
+<% if current_user != nil && @challenge_statement.id.in?(current_user.joined_challenge_statement) %>
+  <% if @challenge_statement.is_open %>
+    <%= link_to "Download brief and template", rails_blob_path(@challenge_statement.zip, disposition: 'attachment'), :class => "button" %>
+    <br/>
+    <br/>
+    <%= link_to "Submit a submission", all_submissions_path, :class => "button" %>
+  <% else %>
+    <%= "Thank you for your interest in Creation 2020, currently we are no longer accepting submissions for this Challenge Statement!" %>
+  <% end %>
+<% end %>
+
+<% if user_signed_in? %>
+  <% if current_user.admin %>
+    <%= button_to 'Edit', edit_challenge_statement_path(@challenge_statement), :method => :get %>
+    <% if @challenge_statement.is_open %>
+      <%= button_to 'Close Challenge Statement', close_challenge_statement_path(@challenge_statement), data: { confirm: 'Are you sure?' }%>
+    <% else %>
+      <%= button_to 'Open Challenge Statement', close_challenge_statement_path(@challenge_statement),  data: { confirm: 'Are you sure?' }%>
+    <% end %>
+  <% end %>
+<% end %>
+<br/>
+<br/>
+<%= link_to 'Back', challenge_statements_path %>
+</div>
+</div>
+</body>
+</html>
