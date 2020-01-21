@@ -142,7 +142,7 @@
 
   <% if current_user != nil && @challenge_statement.id.in?(current_user.joined_challenge_statement) %>
     <% if @challenge_statement.is_open %>
-      <%= link_to "Download brief and template", rails_blob_path(@challenge_statement.zip, disposition: 'attachment'), :class => "button" %>
+      <%= link_to "Download brief", rails_blob_path(@challenge_statement.zip, disposition: 'attachment'), :class => "button" %>
       <br/>
       <br/>
       <%= link_to "Make a submission", all_submissions_path, :class => "button" %>

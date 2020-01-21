@@ -9,6 +9,6 @@ class MessageMailer < ApplicationMailer
     @body = message.body
     @name = message.name
     @email = message.user_email
-    mail to: "creation@nussucommit.com", from: "creation@nussucommit.com", :subject => "You Have a Message From Your Website"
+    mail to: "creation@nussucommit.com", from: "creation@nussucommit.com",reply_to: message.user_email, :subject => "Enquiries about Creation 2020 "
   end
 end
