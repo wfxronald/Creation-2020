@@ -54,7 +54,7 @@
 </table>
 
 <% if current_user.admin %>
-  <h3>User that has joined but haven't submitted</h3>
+  <h5>User that has joined but haven't submitted (<%= @not_submitted_user.length %> / <%= @challenge_statement.submissions.count + @not_submitted_user.length %>)</h5>
   <table>
     <thead>
     <tr>

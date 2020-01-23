@@ -1,4 +1,5 @@
 <h1>All Users</h1>
+<h3>Number of participants: <%= @users.count %> </h3>
 
 <%= link_to 'Download as Excel', users_index_path(format: :xlsx) %>
 
@@ -10,10 +11,11 @@
     <th>Faculty</th>
     <th>Year</th>
     <th>Email</th>
+    <th>Time of Sign Up</th>
     <% @challenge_statements.each do |challenge_statement| %>
       <th><%=  "Challenge Statement " + challenge_statement.id.to_s %> </th>
     <% end %>
-    <th colspan="9"></th>
+    <th colspan="10"></th>
   </tr>
   </thead>
 
@@ -26,6 +28,7 @@
       <td><%= user.faculty %></td>
       <td><%= user.year %></td>
       <td><%= user.email %></td>
+      <td><%= user.created_at.strftime("%Y-%m-%d") %></td>
       <% @challenge_statements.each do |challenge_statement| %>
         <% if user.has_joined_challenge?(challenge_statement.id) && @submissions.where(:challenge_statement_id => challenge_statement.id).exists? %>
           <% submission = @submissions.where(:challenge_statement_id => challenge_statement.id).first %>

@@ -74,7 +74,8 @@
          <% @not_submitted_user.push(user) %>
       <% end %>
     <% end %>
-  <% else %>
+    <h5>Number of participants: <%=  @challenge_statement.submissions.count + @not_submitted_user.length %></h5>
+<% else %>
     <% @submissions = @challenge_statement.submissions.where(:user_id => current_user.id) %>
   <% end %>
   <%= render "submissions/homepage" %>
